@@ -11,7 +11,7 @@
 [![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
-[Ver Demo](https://github.com/IzanKing2/portafolio-izan) · [Descargar CV](public/Izan-CV.pdf) · [Contacto](#contacto)
+[Ver Demo](https://portafolio-iz.netlify.app/) · [Descargar CV](public/Izan-CV.pdf) · [Contacto](#contacto)
 
 </div>
 
