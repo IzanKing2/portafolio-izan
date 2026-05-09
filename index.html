@@ -1,32 +1,22 @@
 <!DOCTYPE html>
-<!-- El atributo data-theme nos servirá para cambiar entre modo claro y oscuro con JavaScript -->
 <html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Meta etiquetas básicas para SEO (Posicionamiento en buscadores) -->
     <title>Izan | Desarrollador Full-Stack</title>
     <meta name="description" content="Portafolio profesional de Izan, desarrollador web Full-Stack especializado en crear experiencias web increíbles.">
-    
-    <!-- Usamos la tipografía 'Inter' de Google Fonts, ideal para diseños minimalistas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
-    <!-- Enlace a nuestro archivo de estilos CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- Librería 'Lucide Icons' para usar iconos modernos y ligeros fácilmente -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <!-- NAVEGACIÓN -->
     <header class="header">
         <nav class="navbar">
             <a href="#" class="logo">Izan<span class="dot">.</span></a>
-            
+
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -36,108 +26,165 @@
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
 
-            <!-- Botón para alternar el modo oscuro/claro -->
-            <button id="theme-toggle" class="icon-btn" aria-label="Cambiar tema">
-                <i data-lucide="sun" id="theme-icon"></i>
-            </button>
+            <div class="nav-right">
+                <a href="public/Izan-CV.pdf" class="btn btn-sm btn-outline" download>
+                    CV <i data-lucide="download"></i>
+                </a>
+                <button id="theme-toggle" class="icon-btn" aria-label="Cambiar tema">
+                    <i data-lucide="sun" id="theme-icon"></i>
+                </button>
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main>
-        <!-- SECCIÓN: INICIO (HERO) -->
-        <!-- Usamos 'fade-in' para que la animación de JavaScript lo detecte -->
+        <!-- HERO -->
         <section id="inicio" class="hero fade-in">
             <div class="hero-content">
-                <p class="greeting">Hola, soy</p>
-                <h1 class="name">Izan</h1>
+                <p class="greeting">// Hola, soy</p>
+                <h1 class="name">Izan<span class="cursor">_</span></h1>
                 <h2 class="role">Desarrollador Web Full-Stack</h2>
                 <p class="summary">Construyo aplicaciones web rápidas, funcionales y con diseños impecables. Transformo ideas en código.</p>
-                
                 <div class="hero-actions">
-                    <!-- Enlace para descargar CV (Apunta a la carpeta assets) -->
-                    <a href="assets/CV_Izan.pdf" class="btn btn-primary" download>
+                    <a href="public/Izan-CV.pdf" class="btn btn-primary" download>
                         Descargar CV <i data-lucide="download"></i>
                     </a>
                     <a href="#contacto" class="btn btn-outline">Contáctame</a>
                 </div>
             </div>
+
+            <div class="hero-code">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <span class="code-dot dot-red"></span>
+                        <span class="code-dot dot-yellow"></span>
+                        <span class="code-dot dot-green"></span>
+                    </div>
+                    <span class="code-filename">developer.js</span>
+                </div>
+                <pre class="code-body"><span class="c-comment">// Mi perfil como desarrollador</span>
+<span class="c-keyword">const</span> developer = {
+  name:      <span class="c-string">"Izan"</span>,
+  role:      <span class="c-string">"Full-Stack Developer"</span>,
+  location:  <span class="c-string">"España 🇪🇸"</span>,
+  stack: [
+    <span class="c-string">"PHP"</span>, <span class="c-string">"Laravel"</span>,
+    <span class="c-string">"JavaScript"</span>, <span class="c-string">"MySQL"</span>,
+  ],
+  interests: [
+    <span class="c-string">"Ciberseguridad"</span>,
+    <span class="c-string">"Inteligencia Artificial"</span>,
+  ],
+  available: <span class="c-bool">true</span>,
+}<span class="c-punct">;</span>
+
+<span class="c-keyword">export default</span> developer<span class="c-punct">;</span></pre>
+            </div>
         </section>
 
-        <!-- SECCIÓN: SOBRE MÍ -->
+        <!-- SOBRE MÍ -->
         <section id="sobre-mi" class="section fade-in">
             <h2 class="section-title">Sobre mí</h2>
             <div class="about-content">
                 <p>
-                    Soy un desarrollador apasionado por la tecnología y la resolución de problemas. 
-                    Me encanta trabajar tanto en el Frontend (creando interfaces limpias y atractivas) 
-                    como en el Backend (diseñando la lógica y las bases de datos).
+                    Soy un desarrollador apasionado por la tecnología y la resolución de problemas.
+                    Me especializo en <code>PHP</code> y <code>Laravel</code> para el backend, y en
+                    <code>JavaScript</code> para crear interfaces dinámicas. Me encanta trabajar tanto
+                    en el Frontend como en el Backend.
                 </p>
                 <p>
-                    Mi enfoque es minimalista: creo que el mejor código y diseño es aquel que es simple, 
-                    eficiente y fácil de mantener. Además de programar, <strong>mis principales intereses</strong> 
-                    incluyen la ciberseguridad, la inteligencia artificial y crear proyectos innovadores.
+                    Mi enfoque es minimalista: creo que el mejor código es aquel que es simple,
+                    eficiente y fácil de mantener. Además de programar, mis principales intereses
+                    incluyen la <strong>ciberseguridad</strong>, la <strong>inteligencia artificial</strong>
+                    y el desarrollo de proyectos propios que resuelvan problemas reales.
                 </p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">2+</span>
+                        <span class="stat-label">Años codificando</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Proyectos completados</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Tecnologías dominadas</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: FORMACIÓN -->
+        <!-- FORMACIÓN -->
         <section id="formacion" class="section fade-in">
             <h2 class="section-title">Formación Académica</h2>
-            
-            <div class="projects-grid">
-                <!-- Tarjeta de formación principal -->
-                <article class="project-card">
-                    <div class="project-info">
-                        <h3>Desarrollo de Aplicaciones Web (DAW)</h3>
-                        <p style="color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem;">I.E.S. Politécnico | 2023 - Presente</p>
-                        <p>Estudio de tecnologías Frontend y Backend, bases de datos, despliegue de aplicaciones web y buenas prácticas de programación.</p>
-                    </div>
-                </article>
-
-                <!-- Tarjeta de formación complementaria -->
-                <article class="project-card">
-                    <div class="project-info">
-                        <h3>Cursos de Especialización</h3>
-                        <p style="color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem;">Plataformas Online | 2022 - 2023</p>
-                        <p>Formación complementaria en diseño de interfaces y lógica de programación estructurada.</p>
-                    </div>
-                </article>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <article class="edu-card">
+                        <div class="project-info">
+                            <div class="card-header">
+                                <h3>Desarrollo de Aplicaciones Web (DAW)</h3>
+                                <span class="card-badge">En curso</span>
+                            </div>
+                            <p class="card-meta">I.E.S. Politécnico &mdash; 2023 &ndash; Presente</p>
+                            <p>Estudio de tecnologías <code>Frontend</code> y <code>Backend</code>, bases de datos, despliegue de aplicaciones web y buenas prácticas de programación.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <article class="edu-card">
+                        <div class="project-info">
+                            <div class="card-header">
+                                <h3>Cursos de Especialización</h3>
+                                <span class="card-badge card-badge--done">Completado</span>
+                            </div>
+                            <p class="card-meta">Plataformas Online &mdash; 2022 &ndash; 2023</p>
+                            <p>Formación complementaria en diseño de interfaces, <code>UX/UI</code> y lógica de programación estructurada.</p>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: HABILIDADES -->
+        <!-- HABILIDADES -->
         <section id="habilidades" class="section fade-in">
             <h2 class="section-title">Habilidades</h2>
             <div class="skills-grid">
-                <!-- Tarjetas individuales para cada tecnología -->
                 <div class="skill-card"><i data-lucide="file-code-2"></i><span>HTML5 & CSS3</span></div>
                 <div class="skill-card"><i data-lucide="file-json-2"></i><span>JavaScript (ES6+)</span></div>
                 <div class="skill-card"><i data-lucide="server"></i><span>PHP</span></div>
                 <div class="skill-card"><i data-lucide="blocks"></i><span>Laravel</span></div>
-                <div class="skill-card"><i data-lucide="database"></i><span>SQL / Bases de Datos</span></div>
+                <div class="skill-card"><i data-lucide="database"></i><span>SQL / MySQL</span></div>
                 <div class="skill-card"><i data-lucide="git-branch"></i><span>Git & GitHub</span></div>
+                <div class="skill-card"><i data-lucide="shield"></i><span>Ciberseguridad</span></div>
+                <div class="skill-card"><i data-lucide="terminal"></i><span>Linux / CLI</span></div>
             </div>
         </section>
 
-        <!-- SECCIÓN: PROYECTOS -->
+        <!-- PROYECTOS -->
         <section id="proyectos" class="section fade-in">
             <h2 class="section-title">Mis Proyectos</h2>
-            
-            <!-- Botones de filtro -->
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">Todos</button>
                 <button class="filter-btn" data-filter="frontend">Frontend</button>
                 <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
             </div>
-
             <div class="projects-grid">
-                <!-- Proyecto 1 (Fullstack - E-commerce) -->
-                <!-- El atributo data-category permite a JavaScript saber qué tipo de proyecto es -->
                 <article class="project-card" data-category="backend">
                     <div class="project-info">
-                        <h3>E-Commerce API</h3>
-                        <p>Plataforma de comercio electrónico con carrito de compras, registro de usuarios y panel de administración.</p>
+                        <div class="card-header">
+                            <h3>E-Commerce API</h3>
+                            <i data-lucide="lock" class="card-icon"></i>
+                        </div>
+                        <p>Plataforma de comercio electrónico con carrito de compras, autenticación de usuarios y panel de administración.</p>
                         <div class="tags">
                             <span>PHP</span><span>Laravel</span><span>MySQL</span>
                         </div>
@@ -147,28 +194,45 @@
                     </div>
                 </article>
 
-                <!-- Proyecto 2 (Frontend) -->
                 <article class="project-card" data-category="frontend">
                     <div class="project-info">
-                        <h3>Dashboard Interactivo</h3>
-                        <p>Panel de control con gráficos interactivos y modo oscuro, consumiendo una API externa.</p>
+                        <div class="card-header">
+                            <h3>Dashboard Interactivo</h3>
+                            <i data-lucide="layout-dashboard" class="card-icon"></i>
+                        </div>
+                        <p>Panel de control con gráficos interactivos y modo oscuro, consumiendo datos de una API externa en tiempo real.</p>
                         <div class="tags">
-                            <span>HTML</span><span>CSS</span><span>JS</span>
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="btn-link">Ver Demo <i data-lucide="external-link"></i></a>
                         </div>
                     </div>
                 </article>
+
+                <article class="project-card" data-category="fullstack">
+                    <div class="project-info">
+                        <div class="card-header">
+                            <h3>Portafolio Personal</h3>
+                            <i data-lucide="user" class="card-icon"></i>
+                        </div>
+                        <p>Este mismo portafolio, diseñado y desarrollado desde cero con HTML, CSS y JavaScript vanilla. Incluye modo oscuro, animaciones y código decorativo.</p>
+                        <div class="tags">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn-link">Ver Código <i data-lucide="github"></i></a>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- SECCIÓN: CONTACTO -->
+        <!-- CONTACTO -->
         <section id="contacto" class="section fade-in">
             <h2 class="section-title">Ponte en contacto</h2>
             <p class="contact-subtitle">¿Tienes un proyecto en mente o buscas un desarrollador? ¡Hablemos!</p>
-            
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('¡Mensaje enviado (simulado)!');">
+            <form class="contact-form" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
                     <label for="name">Nombre</label>
                     <input type="text" id="name" required placeholder="Tu nombre">
@@ -179,24 +243,29 @@
                 </div>
                 <div class="form-group">
                     <label for="message">Mensaje</label>
-                    <textarea id="message" rows="4" required placeholder="¿En qué te puedo ayudar?"></textarea>
+                    <textarea id="message" rows="5" required placeholder="¿En qué te puedo ayudar?"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                <button type="submit" class="btn btn-primary">
+                    Enviar Mensaje <i data-lucide="send"></i>
+                </button>
             </form>
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="social-links">
             <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
             <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
             <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
         </div>
-        <p>&copy; 2024 Izan. Todos los derechos reservados.</p>
+        <p class="footer-cv">
+            <a href="public/Izan-CV.pdf" download>
+                <i data-lucide="file-text"></i> Descargar Curriculum Vitae
+            </a>
+        </p>
+        <p>&copy; 2025 Izan. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script principal de la aplicación -->
     <script src="js/script.js"></script>
 </body>
 </html>
