@@ -9,6 +9,9 @@
     --accent-color: #f59e0b;
     --border-color: #334155;
     --hover-color: #d97706;
+    --glass-bg:     rgba(30, 41, 59, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.10);
+    --glass-hover:  rgba(30, 41, 59, 0.88);
 }
 
 [data-theme="light"] {
@@ -19,6 +22,9 @@
     --accent-color: #d97706;
     --border-color: #e2e8f0;
     --hover-color: #b45309;
+    --glass-bg:     rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(0, 0, 0, 0.10);
+    --glass-hover:  rgba(255, 255, 255, 0.88);
 }
 
 /* ==========================================================================
@@ -60,8 +66,10 @@ code {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: var(--bg-secondary);
-    border-bottom: 1px solid var(--border-color);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
 }
 
@@ -214,8 +222,35 @@ main { padding-top: 80px; }
 /* ==========================================================================
    HERO
    ========================================================================== */
-.hero {
+.hero-section {
+    position: relative;
+    overflow: hidden;
     min-height: calc(100vh - 80px);
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(5, 10, 20, 0.92) 0%,
+        rgba(10, 20, 45, 0.88) 100%
+    );
+    z-index: 1;
+}
+
+.hero {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -223,6 +258,7 @@ main { padding-top: 80px; }
     max-width: 1200px;
     margin: 0 auto;
     padding: 4rem 2rem;
+    min-height: calc(100vh - 80px);
 }
 
 .greeting {
@@ -270,6 +306,29 @@ main { padding-top: 80px; }
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+/* Colores fijos en el hero: siempre claros, sin importar el tema */
+.hero-section .greeting,
+.hero-section .name,
+.hero-section .role,
+.hero-section .summary {
+    color: #f8fafc;
+}
+
+.hero-section .role,
+.hero-section .summary {
+    color: rgba(248, 250, 252, 0.75);
+}
+
+.hero-section .btn-outline {
+    border-color: rgba(248, 250, 252, 0.35);
+    color: #f8fafc;
+}
+
+.hero-section .btn-outline:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 /* Bloque de código del hero */
@@ -399,15 +458,18 @@ main { padding-top: 80px; }
 }
 
 .edu-card {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--glass-border);
     border-left: 3px solid transparent;
     border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.2s, border-left-color 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, border-left-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
 .edu-card:hover {
+    background: var(--glass-hover);
     transform: translateY(-3px);
     border-left-color: var(--accent-color);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
@@ -465,22 +527,25 @@ main { padding-top: 80px; }
 }
 
 .skill-card {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--glass-border);
     padding: 1.75rem 1rem;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
     cursor: default;
 }
 
 .skill-card:hover {
+    background: var(--glass-hover);
     transform: translateY(-5px);
     border-color: var(--accent-color);
-    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.1);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
 .skill-card i {
@@ -532,16 +597,19 @@ main { padding-top: 80px; }
 }
 
 .project-card {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--glass-border);
     border-left: 3px solid transparent;
     border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.2s, border-left-color 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, border-left-color 0.2s, box-shadow 0.2s, background 0.2s;
     display: block;
 }
 
 .project-card:hover {
+    background: var(--glass-hover);
     transform: translateY(-5px);
     border-left-color: var(--accent-color);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
@@ -701,6 +769,8 @@ main { padding-top: 80px; }
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 900px) {
+    .hero-section { min-height: auto; }
+
     .hero {
         grid-template-columns: 1fr;
         text-align: center;
@@ -728,8 +798,10 @@ main { padding-top: 80px; }
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: var(--bg-secondary);
-        border-bottom: 1px solid var(--border-color);
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--glass-border);
         padding: 0.5rem 0;
         gap: 0;
         transform: translateY(-8px);
@@ -748,7 +820,7 @@ main { padding-top: 80px; }
     .nav-links li a {
         display: block;
         padding: 0.9rem 2rem;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--glass-border);
         font-size: 1rem;
     }
 
