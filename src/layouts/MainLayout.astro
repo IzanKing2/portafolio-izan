@@ -1,0 +1,72 @@
+---
+import { profile } from '../data/profile';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = `${profile.name} | ${profile.title}`,
+  description = `Portafolio profesional de ${profile.name}, ${profile.title} en ServiByte. Recién titulado de CIFP Villa de Agüimes.`,
+  ogImage = '/images/og-default.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, profile.siteUrl);
+---
+
+<!doctype html>
+<html lang={profile.locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, profile.siteUrl)} />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, profile.siteUrl)} />
+
+    <!-- Fonts: Inter from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-bg-dark text-zinc-100 min-h-screen flex flex-col">
+    <!-- Screen reader skip link for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent-blue focus:text-white focus:rounded focus:outline-none"
+    >
+      Saltar al contenido principal
+    </a>
+
+    <Navbar />
+
+    <main id="main-content" class="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8" tabindex="-1">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
