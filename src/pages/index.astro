@@ -1,30 +1,16 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import Button from '../components/ui/Button.astro';
-import Badge from '../components/ui/Badge.astro';
-import { profile } from '../data/profile';
+import Hero from '../components/sections/Hero.astro';
+import AboutMe from '../components/sections/AboutMe.astro';
+import ExperienceSection from '../components/sections/ExperienceSection.astro';
+import SkillsGrid from '../components/sections/SkillsGrid.astro';
 ---
 
 <MainLayout>
-  <section class="py-12 sm:py-20 flex flex-col items-start gap-6">
-    <div class="flex flex-wrap gap-2">
-      <Badge label={profile.education.status} variant="tech" />
-      <Badge label={profile.currentJob.contractType} />
-    </div>
-    
-    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-      Hola, soy <span class="text-accent-blue">{profile.name}</span>
-    </h1>
-    
-    <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl leading-relaxed">
-      {profile.title} en <span class="text-zinc-200">{profile.currentJob.company}</span>. Recién graduado de <span class="text-zinc-200">{profile.education.degree}</span> en el {profile.education.institution}.
-    </p>
-
-    <div class="flex flex-wrap gap-4 mt-4">
-      <Button href="#contact" variant="primary">Contactar</Button>
-      <Button href={profile.github} variant="secondary" target="_blank" rel="noopener noreferrer">
-        GitHub
-      </Button>
-    </div>
-  </section>
+  <div class="flex flex-col gap-12 sm:gap-16">
+    <Hero />
+    <AboutMe />
+    <ExperienceSection />
+    <SkillsGrid />
+  </div>
 </MainLayout>

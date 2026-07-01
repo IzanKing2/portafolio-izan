@@ -1,0 +1,20 @@
+---
+import { profile } from '../../data/profile';
+---
+
+<section id="about" class="py-12 border-t border-border-dark flex flex-col md:flex-row gap-8 md:gap-16">
+  <div class="md:w-1/3">
+    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Sobre mí</h2>
+  </div>
+  <div class="md:w-2/3 flex flex-col gap-4 text-zinc-400 text-sm sm:text-base leading-relaxed">
+    <p>
+      Tengo {profile.age} años y recientemente finalicé mis estudios de <strong class="text-zinc-200">{profile.education.degree}</strong> en el <strong class="text-zinc-200">{profile.education.institution}</strong>. Esta base académica me ha aportado una preparación integral en diseño de interfaces y programación.
+    </p>
+    <p>
+      Actualmente, mi experiencia en <strong class="text-zinc-200">{profile.currentJob.company}</strong> me está permitiendo aplicar estos conocimientos académicos en proyectos reales, mejorando mi capacidad de adaptación ante diferentes entornos y tecnologías.
+    </p>
+    <p>
+      Considero que la adaptabilidad y el aprendizaje autónomo son mis mejores herramientas de crecimiento. Me interesa profundamente explorar metodologías modernas como el desarrollo basado en especificaciones (Spec-Driven Development) y el uso estructurado de herramientas de inteligencia artificial para maximizar la calidad y mantenibilidad del software.
+    </p>
+  </div>
+</section>
