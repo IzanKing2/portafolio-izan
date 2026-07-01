@@ -1,0 +1,56 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import ProjectCard from '../../components/ui/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch all projects from the collection
+const allProjects = await getCollection('projects');
+
+// Sort: featured first, then alphabetically or other criteria
+const sortedProjects = [...allProjects].sort((a, b) => {
+  if (a.data.featured && !b.data.featured) return -1;
+  if (!a.data.featured && b.data.featured) return 1;
+  return a.data.title.localeCompare(b.data.title);
+});
+---
+
+<MainLayout
+  title="Proyectos | Izan Carlo Celis Afonso"
+  description="Galería de proyectos de desarrollo web, software y metodologías de Izan Carlo Celis Afonso."
+>
+  <div class="space-y-10 py-4">
+    <!-- Header -->
+    <header class="space-y-4 max-w-2xl">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-zinc-100 tracking-tight">Proyectos</h1>
+      <p class="text-base sm:text-lg text-zinc-400 leading-relaxed">
+        Una recopilación de mis desarrollos más destacados, tanto académicos realizados durante el
+        ciclo de DAW, como personales. Diseñados con atención al detalle y buenas prácticas de
+        desarrollo.
+      </p>
+    </header>
+
+    <hr class="border-border-dark" />
+
+    <!-- Projects Grid -->
+    {
+      sortedProjects.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {sortedProjects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              githubUrl={project.data.githubUrl}
+              liveUrl={project.data.liveUrl}
+              featured={project.data.featured}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12 border border-dashed border-border-dark rounded-xl">
+          <p class="text-zinc-500">Aún no se han publicado proyectos. ¡Vuelve pronto!</p>
+        </div>
+      )
+    }
+  </div>
+</MainLayout>

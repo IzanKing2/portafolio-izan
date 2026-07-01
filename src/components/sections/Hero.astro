@@ -4,16 +4,24 @@ import Button from '../ui/Button.astro';
 ---
 
 <section class="py-12 md:py-20 flex flex-col items-start gap-6">
-  <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+  <h1
+    class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight"
+  >
     Hola, soy <span class="text-accent-blue">{profile.name}</span>
   </h1>
-  
+
   <p class="text-lg sm:text-xl md:text-2xl text-zinc-400 max-w-3xl leading-relaxed">
-    {profile.title} en crecimiento. Actualmente formo parte del equipo de <span class="text-zinc-200">{profile.currentJob.company}</span> en {profile.currentJob.location} a través de la <span class="text-zinc-200">{profile.currentJob.contractType}</span>.
+    {profile.title} en crecimiento. Actualmente formo parte del equipo de <span
+      class="text-zinc-200">{profile.currentJob.company}</span
+    > en {profile.currentJob.location} a través de la <span class="text-zinc-200"
+      >{profile.currentJob.contractType}</span
+    >.
   </p>
-  
+
   <p class="text-sm sm:text-base text-zinc-500 max-w-2xl leading-relaxed">
-    Interesado en construir software estructurado, limpio y fácil de mantener, aplicando metodologías como Spec-Driven Development y adoptando la IA aplicada para mejorar los flujos de desarrollo.
+    Interesado en construir software estructurado, limpio y fácil de mantener, aplicando
+    metodologías como Spec-Driven Development y adoptando la IA aplicada para mejorar los flujos de
+    desarrollo.
   </p>
 
   <div class="flex flex-wrap gap-4 mt-2">

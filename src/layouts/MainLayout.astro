@@ -50,7 +50,10 @@ const canonicalURL = new URL(Astro.url.pathname, profile.siteUrl);
     <!-- Fonts: Inter from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-bg-dark text-zinc-100 min-h-screen flex flex-col">
     <!-- Screen reader skip link for accessibility -->
@@ -63,7 +66,11 @@ const canonicalURL = new URL(Astro.url.pathname, profile.siteUrl);
 
     <Navbar />
 
-    <main id="main-content" class="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8" tabindex="-1">
+    <main
+      id="main-content"
+      class="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
+      tabindex="-1"
+    >
       <slot />
     </main>
 

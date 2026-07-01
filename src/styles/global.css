@@ -1,10 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --color-bg-dark: #09090b;      /* Zinc 950 */
-  --color-card-dark: #18181b;    /* Zinc 900 */
-  --color-border-dark: #27272a;  /* Zinc 800 */
-  --color-accent-blue: #3b82f6;  /* Blue 500 */
+  --color-bg-dark: #09090b; /* Zinc 950 */
+  --color-card-dark: #18181b; /* Zinc 900 */
+  --color-border-dark: #27272a; /* Zinc 800 */
+  --color-accent-blue: #3b82f6; /* Blue 500 */
   --font-sans: 'Inter', sans-serif;
 }
 

@@ -1,0 +1,124 @@
+---
+import Badge from '../ui/Badge.astro';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Análisis de Requisitos',
+    description:
+      'Comprensión rigurosa del problema y contexto antes de escribir código, mapeando dependencias existentes.',
+    badge: 'Estudio',
+  },
+  {
+    number: '02',
+    title: 'Especificación Técnica (SDD)',
+    description:
+      'Creación de especificaciones detalladas en markdown (/specs) que definen el comportamiento exacto y criterios de aceptación.',
+    badge: 'Planificación',
+  },
+  {
+    number: '03',
+    title: 'Automatización & IA',
+    description:
+      'Colaboración con agentes de Inteligencia Artificial para acelerar la implementación de forma predecible y ordenada.',
+    badge: 'Ejecución',
+  },
+  {
+    number: '04',
+    title: 'Código Validado Estricto',
+    description:
+      'Revisión automática de tipos con TypeScript, linters (ESLint), formateadores (Prettier) y pruebas de integración.',
+    badge: 'Control de Calidad',
+  },
+];
+---
+
+<section id="methodology" class="space-y-10 py-4">
+  <div class="space-y-4 max-w-2xl">
+    <h2 class="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight flex items-center gap-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="w-6 h-6 text-accent-blue"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"></path>
+      </svg>
+      Metodología de Trabajo
+    </h2>
+    <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">
+      Creo software robusto, rápido y mantenible aplicando la metodología <strong
+        >Spec-Driven Development (SDD)</strong
+      > en flujos de desarrollo asistidos por IA.
+    </p>
+  </div>
+
+  <!-- Timeline visual -->
+  <div class="relative border-l border-zinc-800 ml-3 md:ml-6 space-y-8 py-2">
+    {
+      steps.map((step) => (
+        <div class="relative pl-8 sm:pl-10 group">
+          {/* Bullet */}
+          <span class="absolute -left-[13px] top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-zinc-950 border border-zinc-800 text-zinc-500 font-mono text-xs transition-colors duration-300 group-hover:border-accent-blue group-hover:text-accent-blue">
+            {step.number}
+          </span>
+
+          {/* Content Card */}
+          <div class="bg-card-dark/40 border border-border-dark/60 rounded-xl p-5 hover:border-zinc-700/80 transition-all duration-300 space-y-2">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="font-bold text-zinc-100 group-hover:text-accent-blue transition-colors duration-300 text-base sm:text-lg">
+                {step.title}
+              </h3>
+              <Badge label={step.badge} variant="tech" class="text-[10px] px-2 py-0" />
+            </div>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">{step.description}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Callout (Portafolio es un ejemplo vivo) -->
+  <div class="bg-accent-blue/5 border border-accent-blue/20 rounded-xl p-5 sm:p-6 space-y-3">
+    <div class="flex items-center gap-2.5 text-accent-blue">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="w-5 h-5 flex-shrink-0"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M11.25 11.25l.041-.02a.75.75 0 111.084 1.047l-2.527 2.919a.75.75 0 01-1.127.042l-1.196-1.196a.75.75 0 011.061-1.06l.74.74 1.92-2.217z"
+        ></path>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
+        ></path>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M9.813 15.904L9 21l5.904-.813a2.25 2.25 0 001.21-.614L21 14.663a2.25 2.25 0 000-3.182l-3.182-3.182a2.25 2.25 0 00-3.182 0l-4.914 4.914a2.25 2.25 0 00-.614 1.21z"
+        ></path>
+      </svg>
+      <h4 class="font-bold text-sm sm:text-base">Ejemplo vivo de SDD</h4>
+    </div>
+    <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+      Este portafolio se ha estructurado y desarrollado completamente utilizando este enfoque.
+      Puedes consultar la carpeta <code
+        class="bg-zinc-900 border border-border-dark px-1.5 py-0.5 rounded text-zinc-300 text-xs"
+        >/specs</code
+      > en el repositorio de GitHub para ver los documentos de especificaciones técnicas que sirvieron
+      como fuente de verdad para implementar cada sección y funcionalidad.
+    </p>
+  </div>
+</section>

@@ -117,7 +117,7 @@ Las especificaciones deben vivir preferentemente en una carpeta:
 
 ```txt
 /specs
-````
+```
 
 Ejemplos de especificaciones:
 
@@ -197,16 +197,16 @@ La estructura recomendada será:
 
 El agente debe respetar estos principios:
 
-* Separar contenido, presentación y lógica.
-* Mantener componentes pequeños y reutilizables.
-* Evitar componentes gigantes.
-* Evitar lógica compleja dentro de las páginas.
-* Centralizar datos personales en archivos de configuración o datos.
-* Usar contenido en Markdown o MDX cuando tenga sentido.
-* Mantener el diseño consistente mediante componentes UI reutilizables.
-* Priorizar rendimiento, accesibilidad y SEO.
-* Evitar dependencias innecesarias.
-* Mantener una estructura fácil de entender para un desarrollador junior o intermedio.
+- Separar contenido, presentación y lógica.
+- Mantener componentes pequeños y reutilizables.
+- Evitar componentes gigantes.
+- Evitar lógica compleja dentro de las páginas.
+- Centralizar datos personales en archivos de configuración o datos.
+- Usar contenido en Markdown o MDX cuando tenga sentido.
+- Mantener el diseño consistente mediante componentes UI reutilizables.
+- Priorizar rendimiento, accesibilidad y SEO.
+- Evitar dependencias innecesarias.
+- Mantener una estructura fácil de entender para un desarrollador junior o intermedio.
 
 ---
 
@@ -223,7 +223,7 @@ Ejemplos correctos:
 ```ts
 const featuredProjects = [];
 const technologies = [];
-const professionalSummary = "";
+const professionalSummary = '';
 ```
 
 Ejemplos incorrectos:
@@ -231,7 +231,7 @@ Ejemplos incorrectos:
 ```ts
 const proyectosDestacados = [];
 const tecnologias = [];
-const resumenProfesional = "";
+const resumenProfesional = '';
 ```
 
 ---
@@ -305,8 +305,8 @@ Ejemplo:
 ```ts
 export type Technology = {
   name: string;
-  category: "frontend" | "backend" | "database" | "devops" | "tools" | "other";
-  level?: "learning" | "comfortable" | "experienced";
+  category: 'frontend' | 'backend' | 'database' | 'devops' | 'tools' | 'other';
+  level?: 'learning' | 'comfortable' | 'experienced';
 };
 ```
 
@@ -326,11 +326,11 @@ No abusar de clases excesivamente largas si se puede extraer un componente.
 
 Mantener un sistema visual coherente:
 
-* Espaciados consistentes
-* Tipografía consistente
-* Colores consistentes
-* Estados hover/focus accesibles
-* Diseño responsive desde el inicio
+- Espaciados consistentes
+- Tipografía consistente
+- Colores consistentes
+- Estados hover/focus accesibles
+- Diseño responsive desde el inicio
 
 ---
 
@@ -340,15 +340,15 @@ El sitio debe cumplir buenas prácticas básicas de accesibilidad.
 
 Obligatorio:
 
-* Usar HTML semántico.
-* Usar una estructura correcta de headings.
-* Mantener contraste suficiente.
-* Añadir textos alternativos a imágenes relevantes.
-* No depender solo del color para comunicar información.
-* Asegurar navegación por teclado.
-* Usar `aria-label` cuando sea necesario.
-* Mantener estados `focus` visibles.
-* No introducir animaciones invasivas.
+- Usar HTML semántico.
+- Usar una estructura correcta de headings.
+- Mantener contraste suficiente.
+- Añadir textos alternativos a imágenes relevantes.
+- No depender solo del color para comunicar información.
+- Asegurar navegación por teclado.
+- Usar `aria-label` cuando sea necesario.
+- Mantener estados `focus` visibles.
+- No introducir animaciones invasivas.
 
 ---
 
@@ -358,13 +358,13 @@ El sitio debe estar preparado para SEO básico.
 
 Cada página importante debe tener:
 
-* Title único
-* Meta description
-* URL limpia
-* Open Graph básico
-* Contenido semántico
-* Buen rendimiento
-* Jerarquía correcta de encabezados
+- Title único
+- Meta description
+- URL limpia
+- Open Graph básico
+- Contenido semántico
+- Buen rendimiento
+- Jerarquía correcta de encabezados
 
 La página principal debe comunicar claramente quién es el desarrollador, qué hace y cómo contactarlo.
 
@@ -374,26 +374,26 @@ La página principal debe comunicar claramente quién es el desarrollador, qué 
 
 El diseño debe ser:
 
-* Profesional
-* Moderno
-* Limpio
-* Elegante
-* Rápido de entender
-* Responsive
-* Sin exceso de animaciones
-* Sin efectos visuales innecesarios
-* Adecuado para un perfil de desarrollador web junior/profesional emergente
+- Profesional
+- Moderno
+- Limpio
+- Elegante
+- Rápido de entender
+- Responsive
+- Sin exceso de animaciones
+- Sin efectos visuales innecesarios
+- Adecuado para un perfil de desarrollador web junior/profesional emergente
 
 Debe evitar parecer una plantilla genérica sin personalidad.
 
 El diseño debe transmitir una mezcla de:
 
-* Perfil técnico
-* Claridad
-* Ambición profesional
-* Cercanía
-* Interés por la tecnología
-* Capacidad de aprendizaje
+- Perfil técnico
+- Claridad
+- Ambición profesional
+- Cercanía
+- Interés por la tecnología
+- Capacidad de aprendizaje
 
 ---
 
@@ -418,10 +418,10 @@ La página principal debe incluir, como mínimo:
 
 Debe comunicar claramente:
 
-* Nombre del desarrollador
-* Rol: Desarrollador web
-* Situación actual: recién titulado en DAW y trabajando en ServiByte mediante beca Cataliza
-* Interés en desarrollo web moderno, IA aplicada al desarrollo y Spec-Driven Development
+- Nombre del desarrollador
+- Rol: Desarrollador web
+- Situación actual: recién titulado en DAW y trabajando en ServiByte mediante beca Cataliza
+- Interés en desarrollo web moderno, IA aplicada al desarrollo y Spec-Driven Development
 
 Tono recomendado:
 
@@ -429,15 +429,15 @@ Profesional, directo y con personalidad.
 
 Evitar frases exageradas como:
 
-* "Soy un experto"
-* "Domino todas las tecnologías"
-* "Creo soluciones revolucionarias"
+- "Soy un experto"
+- "Domino todas las tecnologías"
+- "Creo soluciones revolucionarias"
 
 Preferir frases realistas como:
 
-* "Desarrollador web en etapa de crecimiento profesional"
-* "Interesado en construir software claro, útil y mantenible"
-* "Aplicando metodologías modernas como Spec-Driven Development para trabajar mejor con agentes de IA"
+- "Desarrollador web en etapa de crecimiento profesional"
+- "Interesado en construir software claro, útil y mantenible"
+- "Aplicando metodologías modernas como Spec-Driven Development para trabajar mejor con agentes de IA"
 
 ---
 
@@ -445,11 +445,11 @@ Preferir frases realistas como:
 
 Debe explicar brevemente:
 
-* Formación en Desarrollo de Aplicaciones Web
-* Inicio profesional en ServiByte
-* Capacidad de adaptación
-* Interés por aprender nuevas tecnologías
-* Motivación por mejorar procesos de desarrollo usando IA
+- Formación en Desarrollo de Aplicaciones Web
+- Inicio profesional en ServiByte
+- Capacidad de adaptación
+- Interés por aprender nuevas tecnologías
+- Motivación por mejorar procesos de desarrollo usando IA
 
 ---
 
@@ -489,34 +489,34 @@ Organizar tecnologías por categorías:
 
 Frontend:
 
-* HTML
-* CSS
-* JavaScript
-* Astro
-* Tailwind CSS
-* TypeScript
+- HTML
+- CSS
+- JavaScript
+- Astro
+- Tailwind CSS
+- TypeScript
 
 Backend:
 
-* PHP
-* Laravel
-* Python
+- PHP
+- Laravel
+- Python
 
 Bases de datos:
 
-* SQL
+- SQL
 
 DevOps y entorno:
 
-* Docker
-* Ubuntu
-* Git
-* GitHub
+- Docker
+- Ubuntu
+- Git
+- GitHub
 
 Metodología:
 
-* Spec-Driven Development
-* Desarrollo asistido por IA
+- Spec-Driven Development
+- Desarrollo asistido por IA
 
 ---
 
@@ -524,12 +524,12 @@ Metodología:
 
 Los proyectos deben mostrar:
 
-* Qué problema resuelve el proyecto
-* Qué tecnologías usa
-* Qué decisiones técnicas se tomaron
-* Qué aprendió el desarrollador
-* Enlace a demo si existe
-* Enlace a repositorio si existe
+- Qué problema resuelve el proyecto
+- Qué tecnologías usa
+- Qué decisiones técnicas se tomaron
+- Qué aprendió el desarrollador
+- Enlace a demo si existe
+- Enlace a repositorio si existe
 
 No crear proyectos falsos como si ya existieran.
 
@@ -543,13 +543,13 @@ Debe haber una sección dedicada a explicar que este portafolio se ha construido
 
 Debe comunicar que el desarrollador sabe:
 
-* Definir especificaciones antes de implementar
-* Trabajar con agentes de IA
-* Revisar cambios
-* Mantener convenciones
-* Documentar decisiones
-* Controlar la calidad del código
-* Usar Git de forma ordenada
+- Definir especificaciones antes de implementar
+- Trabajar con agentes de IA
+- Revisar cambios
+- Mantener convenciones
+- Documentar decisiones
+- Controlar la calidad del código
+- Usar Git de forma ordenada
 
 ---
 
@@ -561,17 +561,17 @@ Estas reglas son obligatorias y nunca deben saltarse.
 
 El agente no debe inventar:
 
-* Nombre completo
-* Teléfono
-* Correo
-* LinkedIn
-* GitHub
-* Fechas exactas
-* Responsabilidades laborales concretas
-* Proyectos reales
-* Empresas adicionales
-* Certificaciones no mencionadas
-* Nivel de dominio falso sobre tecnologías
+- Nombre completo
+- Teléfono
+- Correo
+- LinkedIn
+- GitHub
+- Fechas exactas
+- Responsabilidades laborales concretas
+- Proyectos reales
+- Empresas adicionales
+- Certificaciones no mencionadas
+- Nivel de dominio falso sobre tecnologías
 
 Si falta un dato, debe dejar un placeholder claro.
 
@@ -592,21 +592,21 @@ El portafolio debe sonar profesional, pero honesto.
 
 No usar términos como:
 
-* Experto
-* Senior
-* Gurú
-* Especialista avanzado
-* Dominio completo
-* Full-stack expert
+- Experto
+- Senior
+- Gurú
+- Especialista avanzado
+- Dominio completo
+- Full-stack expert
 
 Preferir:
 
-* Desarrollador web
-* Desarrollador en crecimiento
-* Perfil junior con base sólida
-* Profesional en etapa inicial
-* Interesado en
-* Con experiencia académica y práctica en
+- Desarrollador web
+- Desarrollador en crecimiento
+- Perfil junior con base sólida
+- Profesional en etapa inicial
+- Interesado en
+- Con experiencia académica y práctica en
 
 ---
 
@@ -614,10 +614,10 @@ Preferir:
 
 Antes de añadir una dependencia nueva, el agente debe explicar:
 
-* Qué problema resuelve
-* Por qué es necesaria
-* Qué alternativa más simple existe
-* Si afecta al rendimiento o mantenimiento
+- Qué problema resuelve
+- Por qué es necesaria
+- Qué alternativa más simple existe
+- Si afecta al rendimiento o mantenimiento
 
 No añadir librerías por comodidad si HTML, CSS, Astro o TypeScript son suficientes.
 
@@ -627,9 +627,9 @@ No añadir librerías por comodidad si HTML, CSS, Astro o TypeScript son suficie
 
 Todo cambio visual debe funcionar correctamente en:
 
-* Mobile
-* Tablet
-* Desktop
+- Mobile
+- Tablet
+- Desktop
 
 No implementar secciones que solo se vean bien en una resolución.
 
@@ -681,13 +681,13 @@ No mezclar español e inglés en la interfaz salvo que haya una decisión explí
 
 Nunca incluir en el código:
 
-* API keys
-* Tokens
-* Contraseñas
-* Datos privados
-* Credenciales
-* Archivos `.env`
-* Información sensible
+- API keys
+- Tokens
+- Contraseñas
+- Datos privados
+- Credenciales
+- Archivos `.env`
+- Información sensible
 
 Si se necesitan variables de entorno, usar:
 
@@ -711,13 +711,13 @@ I build scalable world-class solutions
 
 El contenido debe estar conectado con:
 
-* Desarrollo web
-* DAW
-* Villa de Agüimes
-* ServiByte
-* Beca Cataliza
-* IA aplicada al desarrollo
-* Spec-Driven Development
+- Desarrollo web
+- DAW
+- Villa de Agüimes
+- ServiByte
+- Beca Cataliza
+- IA aplicada al desarrollo
+- Spec-Driven Development
 
 ---
 
@@ -763,12 +763,12 @@ El sitio debe ser rápido.
 
 Evitar:
 
-* Imágenes pesadas
-* Animaciones costosas
-* Librerías innecesarias
-* Carga excesiva de JavaScript
-* Fuentes externas sin control
-* Assets sin optimizar
+- Imágenes pesadas
+- Animaciones costosas
+- Librerías innecesarias
+- Carga excesiva de JavaScript
+- Fuentes externas sin control
+- Assets sin optimizar
 
 ---
 
@@ -776,15 +776,15 @@ Evitar:
 
 No implementar:
 
-* Login
-* Panel de administración
-* Base de datos
-* Backend
-* Sistema de comentarios
-* CMS complejo
-* Autenticación
-* Newsletter
-* Analytics invasivo
+- Login
+- Panel de administración
+- Base de datos
+- Backend
+- Sistema de comentarios
+- CMS complejo
+- Autenticación
+- Newsletter
+- Analytics invasivo
 
 A menos que exista una especificación y aprobación explícita.
 
@@ -794,11 +794,11 @@ A menos que exista una especificación y aprobación explícita.
 
 No eliminar:
 
-* README
-* AGENT.md
-* Specs
-* Comentarios útiles
-* Decisiones técnicas documentadas
+- README
+- AGENT.md
+- Specs
+- Comentarios útiles
+- Decisiones técnicas documentadas
 
 Sin confirmación previa.
 
@@ -846,10 +846,10 @@ El agente debe trabajar pensando en Git.
 
 Buenas prácticas:
 
-* Cambios pequeños y agrupados por intención.
-* No mezclar cambios de diseño, contenido y configuración si no es necesario.
-* No modificar archivos irrelevantes.
-* Proponer mensajes de commit claros.
+- Cambios pequeños y agrupados por intención.
+- No mezclar cambios de diseño, contenido y configuración si no es necesario.
+- No modificar archivos irrelevantes.
+- Proponer mensajes de commit claros.
 
 Formato recomendado de commits:
 
@@ -868,14 +868,14 @@ fix: improve heading hierarchy
 
 Antes de dar una tarea por terminada, el agente debe comprobar, cuando sea posible:
 
-* El proyecto compila.
-* No hay errores de TypeScript.
-* No hay errores claros de lint.
-* El diseño es responsive.
-* La estructura de headings tiene sentido.
-* No se añadieron datos falsos.
-* No se añadieron dependencias innecesarias.
-* No se rompieron convenciones existentes.
+- El proyecto compila.
+- No hay errores de TypeScript.
+- No hay errores claros de lint.
+- El diseño es responsive.
+- La estructura de headings tiene sentido.
+- No se añadieron datos falsos.
+- No se añadieron dependencias innecesarias.
+- No se rompieron convenciones existentes.
 
 ---
 
@@ -883,17 +883,17 @@ Antes de dar una tarea por terminada, el agente debe comprobar, cuando sea posib
 
 El portafolio será considerado correcto si:
 
-* Presenta el perfil de forma clara y honesta.
-* Tiene buen rendimiento.
-* Es responsive.
-* Es accesible.
-* Tiene buen SEO básico.
-* Es fácil de mantener.
-* Tiene una arquitectura limpia.
-* Permite añadir proyectos fácilmente.
-* Refleja interés real por el desarrollo moderno y la IA.
-* Documenta el uso de Spec-Driven Development.
-* No contiene datos inventados ni exageraciones.
+- Presenta el perfil de forma clara y honesta.
+- Tiene buen rendimiento.
+- Es responsive.
+- Es accesible.
+- Tiene buen SEO básico.
+- Es fácil de mantener.
+- Tiene una arquitectura limpia.
+- Permite añadir proyectos fácilmente.
+- Refleja interés real por el desarrollo moderno y la IA.
+- Documenta el uso de Spec-Driven Development.
+- No contiene datos inventados ni exageraciones.
 
 ---
 
@@ -901,13 +901,13 @@ El portafolio será considerado correcto si:
 
 El tono del sitio debe ser:
 
-* Profesional
-* Cercano
-* Claro
-* Honesto
-* Seguro, pero no arrogante
-* Técnico, pero comprensible
-* Ambicioso, pero realista
+- Profesional
+- Cercano
+- Claro
+- Honesto
+- Seguro, pero no arrogante
+- Técnico, pero comprensible
+- Ambicioso, pero realista
 
 La comunicación debe mostrar que el desarrollador está al inicio de su carrera profesional, pero con buena base, criterio técnico y muchas ganas de seguir creciendo.
 
@@ -932,21 +932,21 @@ Cuando haya dudas, priorizar en este orden:
 
 El agente nunca debe:
 
-* Inventar información personal o profesional.
-* Presentar al desarrollador como senior o experto.
-* Añadir tecnologías solo para aparentar.
-* Añadir dependencias innecesarias.
-* Implementar funcionalidades no solicitadas.
-* Saltarse las especificaciones.
-* Modificar grandes partes del proyecto sin plan.
-* Ignorar errores de build.
-* Ignorar accesibilidad.
-* Subir secretos o credenciales.
-* Usar textos genéricos de plantilla.
-* Crear proyectos falsos como si fueran reales.
-* Cambiar el stack principal sin aprobación.
-* Eliminar documentación sin permiso.
-* Romper la estructura del proyecto sin justificarlo.
+- Inventar información personal o profesional.
+- Presentar al desarrollador como senior o experto.
+- Añadir tecnologías solo para aparentar.
+- Añadir dependencias innecesarias.
+- Implementar funcionalidades no solicitadas.
+- Saltarse las especificaciones.
+- Modificar grandes partes del proyecto sin plan.
+- Ignorar errores de build.
+- Ignorar accesibilidad.
+- Subir secretos o credenciales.
+- Usar textos genéricos de plantilla.
+- Crear proyectos falsos como si fueran reales.
+- Cambiar el stack principal sin aprobación.
+- Eliminar documentación sin permiso.
+- Romper la estructura del proyecto sin justificarlo.
 
 ---
 

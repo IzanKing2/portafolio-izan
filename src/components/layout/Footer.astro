@@ -5,10 +5,14 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="w-full border-t border-border-dark bg-bg-dark py-8 mt-auto">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+  <div
+    class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+  >
     <div class="text-zinc-500 text-xs sm:text-sm text-center sm:text-left">
       <p>&copy; {currentYear} {profile.name}. Todos los derechos reservados.</p>
-      <p class="mt-1 text-[10px] text-zinc-600">Construido con Astro 5, Tailwind v4 y Spec-Driven Development.</p>
+      <p class="mt-1 text-[10px] text-zinc-600">
+        Construido con Astro 5, Tailwind v4 y Spec-Driven Development.
+      </p>
     </div>
 
     <nav aria-label="Enlaces de redes sociales y contacto">
