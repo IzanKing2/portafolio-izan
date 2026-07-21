@@ -1,0 +1,56 @@
+.section {
+  padding: 6rem 2rem;
+  background-color: var(--color-surface);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.decorativeLine {
+  border-bottom: 2px solid var(--color-accent);
+  width: 60px;
+  margin: 0.5rem auto 3rem;
+}
+
+.groups {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.group {
+  flex: 1;
+  min-width: 220px;
+}
+
+.groupTitle {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pill {
+  background-color: #1e1e2e;
+  color: var(--color-text);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  border: 1px solid #2a2a3e;
+  display: inline-flex;
+}

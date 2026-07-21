@@ -1,0 +1,73 @@
+.section {
+  padding: 6rem 2rem;
+  background-color: var(--color-bg);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.decorativeLine {
+  border-bottom: 2px solid var(--color-accent);
+  width: 60px;
+  margin: 0.5rem auto 3rem;
+}
+
+.timeline {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  position: relative;
+  padding-left: 2.5rem;
+  border-left: 2px solid var(--color-accent);
+  margin-left: 1rem;
+}
+
+.item {
+  position: relative;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  position: absolute;
+  left: -2.95rem;
+  top: 0.25rem;
+}
+
+.company {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.role {
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  margin-top: 0.15rem;
+}
+
+.period {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.15rem;
+}
+
+.description {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.description li {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}

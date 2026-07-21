@@ -1,0 +1,50 @@
+import styles from '../styles/Experiencia.module.css'
+
+const experiences = [
+  {
+    empresa: 'Servibyte S.L.',
+    ubicacion: 'San Fernando',
+    rol: 'Desarrollador Web — Beca Cataliza',
+    periodo: '2026 — Actual',
+    descripcion: [
+      'Desarrollo integral de aplicaciones web con soluciones escalables.',
+      'Trabajo en equipo colaborativo y adaptación a requisitos del proyecto.',
+    ],
+  },
+  {
+    empresa: 'Servibyte S.L.',
+    ubicacion: 'San Fernando',
+    rol: 'Desarrollador Web — Prácticas FP Dual',
+    periodo: '2025 — 2026',
+    descripcion: [
+      'Ciclo completo de desarrollo software, backend y frontend.',
+      'Control de versiones, despliegue de proyectos y metodologías ágiles.',
+    ],
+  },
+]
+
+function Experiencia() {
+  return (
+    <section id="experiencia" className={styles.section}>
+      <h2 className={styles.title}>Experiencia</h2>
+      <div className={styles.decorativeLine}></div>
+      <div className={styles.timeline}>
+        {experiences.map((exp) => (
+          <div key={exp.periodo} className={styles.item}>
+            <span className={styles.dot}></span>
+            <p className={styles.company}>{exp.empresa} · {exp.ubicacion}</p>
+            <p className={styles.role}>{exp.rol}</p>
+            <p className={styles.period}>{exp.periodo}</p>
+            <ul className={styles.description}>
+              {exp.descripcion.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+export default Experiencia
