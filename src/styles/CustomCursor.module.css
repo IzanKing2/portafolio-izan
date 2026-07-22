@@ -1,0 +1,35 @@
+.dot,
+.ring {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent);
+}
+
+.ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--color-accent);
+  background: transparent;
+  opacity: 0.6;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.ringHover {
+  transform: translate(-50%, -50%) scale(1.8);
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .dot,
+  .ring {
+    display: none;
+  }
+}

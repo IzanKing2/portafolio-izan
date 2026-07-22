@@ -1,3 +1,5 @@
+import { useInView } from '../hooks/useInView'
+import { MdWork } from 'react-icons/md'
 import styles from '../styles/Experiencia.module.css'
 
 const experiences = [
@@ -24,14 +26,16 @@ const experiences = [
 ]
 
 function Experiencia() {
+  const [ref, inView] = useInView()
+
   return (
-    <section id="experiencia" className={styles.section}>
+    <section id="experiencia" ref={ref} className={`${styles.section} fade-in ${inView ? 'visible' : ''}`}>
       <h2 className={styles.title}>Experiencia</h2>
       <div className={styles.decorativeLine}></div>
       <div className={styles.timeline}>
         {experiences.map((exp) => (
           <div key={exp.periodo} className={styles.item}>
-            <span className={styles.dot}></span>
+            <MdWork style={{ position: 'absolute', left: '-2.5rem', top: '0.15rem', fontSize: '1rem', color: 'var(--color-accent)' }} />
             <p className={styles.company}>{exp.empresa} · {exp.ubicacion}</p>
             <p className={styles.role}>{exp.rol}</p>
             <p className={styles.period}>{exp.periodo}</p>

@@ -1,19 +1,22 @@
 :root {
   --color-bg: #0a0a0f;
   --color-surface: #13131a;
-  --color-accent: #00d4ff;
+  --color-accent: #f5c400;
   --color-text: #e8e8f0;
   --color-text-muted: #7a7a9a;
   --font-main: 'Inter', sans-serif;
   --max-width: 1100px;
 }
 
-*,
-*::before,
-*::after {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none;
+}
+
+a, button {
+  cursor: none;
 }
 
 html {
@@ -26,3 +29,22 @@ body {
   font-family: var(--font-main);
   line-height: 1.6;
 }
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in.visible * {
+  opacity: 1 !important;
+}
+
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
