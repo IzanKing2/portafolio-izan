@@ -1,18 +1,6 @@
 .section {
   padding: 6rem 2rem;
-  background-color: var(--color-surface);
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-.decorativeLine {
-  border-bottom: 2px solid var(--color-accent);
-  width: 60px;
-  margin: 0.5rem auto 3rem;
+  background-color: var(--color-bg);
 }
 
 .container {
@@ -20,59 +8,125 @@
   margin: 0 auto;
 }
 
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 1.5rem;
 }
 
 .card {
-  background-color: #0f0f18;
-  border-radius: 10px;
-  padding: 1.75rem;
-  border: 1px solid #2a2a3e;
+  background-color: var(--color-surface);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-  transition: left 0.5s ease;
-}
-
-.card:hover::before {
-  left: 100%;
+[data-theme='light'] .card {
+  border: none;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
 }
 
 .card:hover {
   border-color: var(--color-accent);
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(245, 196, 0, 0.08);
-  transition: all 0.3s ease;
+  transform: translateY(-4px);
 }
 
-.cardDestacado {
-  border-left: 3px solid var(--color-accent);
+.largeCard {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.largeCard .imagePlaceholder {
+  width: 55%;
+  height: auto;
+  min-height: 350px;
+}
+
+.largeCard .cardContent {
+  width: 45%;
+  justify-content: center;
+}
+
+.placeholderGradient {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(245, 196, 0, 0.1) 0%, rgba(10, 10, 15, 0.8) 100%);
+}
+
+[data-theme='light'] .placeholderGradient {
+  background: linear-gradient(135deg, rgba(245, 196, 0, 0.2) 0%, rgba(240, 240, 240, 0.8) 100%);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.floatingPill {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cardContent {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .cardTitle {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
+  color: var(--color-text);
 }
 
 .cardDescription {
   color: var(--color-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.6;
+  margin-bottom: 1.5rem;
   flex: 1;
 }
 
@@ -80,35 +134,120 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .pill {
-  background-color: #1e1e2e;
-  color: var(--color-text);
-  border-radius: 20px;
-  padding: 0.25rem 0.75rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-muted);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
   font-size: 0.75rem;
-  border: 1px solid #2a2a3e;
-  display: inline-flex;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='light'] .pill {
+  background-color: var(--color-surface);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .link {
   display: inline-block;
-  margin-top: 1.25rem;
-  padding: 0.5rem 1.25rem;
-  border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
-  background-color: transparent;
-  transition: background-color 0.2s, color 0.2s;
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
   align-self: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='light'] .link {
+  background-color: var(--color-surface);
+  border: 1px solid #111111;
+  color: #111111;
 }
 
 .link:hover {
   background-color: var(--color-accent);
-  color: #0a0a0f;
+  color: #000;
+  border-color: var(--color-accent);
+}
+
+[data-theme='light'] .link:hover {
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-muted);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+[data-theme='light'] .filterBtn {
+  background: var(--color-surface);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #555555;
+}
+
+[data-theme='light'] .filterBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111111;
+}
+
+[data-theme='light'] .activeFilter {
+  background: #111111 !important;
+  color: #ffffff !important;
+  border-color: #111111 !important;
+}
+
+.filterBtn:hover {
+  background: rgba(245, 196, 0, 0.1);
+  color: var(--color-text);
+}
+
+.activeFilter {
+  background: var(--color-accent) !important;
+  color: #000 !important;
+  border-color: var(--color-accent) !important;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .largeCard {
+    grid-column: 1;
+    grid-row: auto;
+    flex-direction: column;
+  }
+  .largeCard .imagePlaceholder,
+  .largeCard .cardContent {
+    width: 100%;
+  }
+  .largeCard .imagePlaceholder {
+    min-height: 250px;
+  }
 }

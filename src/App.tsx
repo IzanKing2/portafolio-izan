@@ -18,13 +18,15 @@ function App() {
       <CustomCursor />
       <Navbar />
       <Hero />
-      <Suspense fallback={<div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Cargando...</div>}>
-        <SobreMi />
-        <Tecnologias />
-        <Proyectos />
-        <Experiencia />
-        <Contacto />
-      </Suspense>
+      <main>
+        <Suspense fallback={<div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Cargando...</div>}>
+          <SobreMi />
+          <Tecnologias />
+          <Proyectos />
+          <Experiencia />
+          <Contacto />
+        </Suspense>
+      </main>
       <Footer />
     </>
   )

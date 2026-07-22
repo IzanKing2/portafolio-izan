@@ -4,28 +4,33 @@ export interface Project {
   stack: string[];
   github: string;
   destacado: boolean;
+  imagen?: string;
+  demo?: string;
 }
 
 export const projects: Project[] = [
   {
     titulo: 'GeekZone — E-commerce',
-    descripcion: 'Marketplace de coleccionables (Marvel, Stray Kids, Fútbol). Plataforma completa con catálogo, carrito, favoritos, panel admin y API REST documentada con Swagger. Proyecto intermodular de 2º DAW.',
+    descripcion: 'Collectibles marketplace (Marvel, Stray Kids, Football). Full platform with catalog, cart, favorites, admin panel, and REST API documented with Swagger. Intermodular DAW project.',
     stack: ['Laravel', 'PHP', 'MySQL', 'Docker', 'Nginx', 'JWT', 'Swagger'],
     github: 'https://github.com/IzanKing2/geekzone-ecommerce',
+    demo: '#',
     destacado: true,
   },
   {
-    titulo: 'Tienda de Muebles Híbrida',
-    descripcion: 'Arquitectura orientada a servicios con 3 proyectos Laravel independientes: API de productos, API de usuarios y tienda principal que los consume. Enfoque en desacoplamiento y escalabilidad.',
-    stack: ['Laravel', 'PHP', 'MySQL', 'API REST', 'Arquitectura SOA'],
+    titulo: 'Hybrid Furniture Store',
+    descripcion: 'Service-oriented architecture with 3 independent Laravel projects: Products API, Users API, and the main store consuming them. Focused on decoupling and scalability.',
+    stack: ['Laravel', 'PHP', 'MySQL', 'API REST', 'SOA Architecture'],
     github: 'https://github.com/IzanKing2/03-tienda-muebles-hibrido',
+    demo: '#',
     destacado: false,
   },
   {
-    titulo: 'API REST de Notas',
-    descripcion: 'API REST en Java + Spring Boot para gestión de usuarios y notas con relaciones 1:N. Incluye validación con Jakarta, manejo global de excepciones, tests con JUnit y Mockito, y colección Postman.',
+    titulo: 'Notes REST API',
+    descripcion: 'Java + Spring Boot REST API for user and note management with 1:N relationships. Includes Jakarta validation, global exception handling, JUnit & Mockito tests, and Postman collection.',
     stack: ['Java', 'Spring Boot', 'MySQL', 'JUnit', 'Mockito', 'Postman'],
     github: 'https://github.com/IzanKing2/API-Notas',
+    demo: '#',
     destacado: false,
   },
 ];

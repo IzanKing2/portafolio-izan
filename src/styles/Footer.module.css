@@ -1,7 +1,7 @@
 .footer {
-  background-color: var(--color-surface);
-  padding: 2.5rem 2rem;
-  border-top: 1px solid #2a2a3e;
+  background-color: transparent;
+  padding: 2rem;
+  text-align: center;
 }
 
 .inner {

@@ -1,32 +1,35 @@
-import { useInView } from '../hooks/useInView'
 import styles from '../styles/SobreMi.module.css'
+import { motion } from 'framer-motion'
 
 const values = [
-  'Proactividad',
-  'Trabajo en equipo',
-  'Adaptabilidad',
-  'Atención al detalle',
+  'Proactive',
+  'Team Player',
+  'Adaptable',
+  'Detail-Oriented',
   'UI/UX',
 ]
 
 function SobreMi() {
-  const [ref, inView] = useInView()
-
   return (
-    <section id="sobre-mi" ref={ref} className={`${styles.section} fade-in ${inView ? 'visible' : ''}`}>
-      <h2 className={styles.title}>Sobre mí</h2>
-      <div className={styles.decorativeLine}></div>
-      <div className={styles.content}>
+    <section id="about" className={styles.section}>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className={styles.title}>ABOUT ME</h2>
+        <div className={styles.content}>
         <div className={styles.textColumn}>
           <p>
-            Soy un desarrollador web Full Stack con ojo para el diseño
-            y pasión por construir interfaces que no solo funcionen, sino que
-            se sientan bien. Me formé en DAW y llevo más de un año aplicando
-            lo aprendido en entorno real en Servibyte S.L.
+            I am a Full Stack Web Developer with an eye for design
+            and a passion for building interfaces that not only function flawlessly,
+            but feel great to use. I have a degree in Web Application Development (DAW) 
+            and over a year of hands-on experience at Servibyte S.L.
           </p>
           <p>
-            Trabajo con criterio propio, aprendo rápido y disfruto
-            colaborando en equipo. Uso IA como herramienta, no como muleta.
+            I work with strong independent judgment, learn quickly, and thrive
+            in collaborative team environments. I leverage AI as a powerful tool, not a crutch.
           </p>
           <div className={styles.values}>
             {values.map((v) => (
@@ -35,9 +38,10 @@ function SobreMi() {
           </div>
         </div>
         <div className={styles.avatarColumn}>
-          <div className={styles.avatar}>Foto</div>
+          <div className={styles.avatar}>Photo</div>
         </div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   )
 }

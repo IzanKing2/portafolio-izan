@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react'
+import { FiSun, FiMoon } from 'react-icons/fi'
+import { useTheme } from '../hooks/useTheme'
 import styles from '../styles/Navbar.module.css'
 
 const sections = [
-  { id: 'hero', label: 'Inicio' },
-  { id: 'sobre-mi', label: 'Sobre mí' },
-  { id: 'tecnologias', label: 'Tecnologías' },
-  { id: 'proyectos', label: 'Proyectos' },
-  { id: 'experiencia', label: 'Experiencia' },
-  { id: 'contacto', label: 'Contacto' },
+  { id: 'projects', label: 'Work' },
+  { id: 'tech', label: 'Tech' },
+  { id: 'about', label: 'About' },
+  { id: 'contact', label: 'Contact' },
 ]
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const { theme, toggleTheme } = useTheme()
   const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      setScrolled(window.scrollY > 20)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -44,10 +45,12 @@ function Navbar() {
   }, [])
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
-      <div className={styles.inner}>
+    <div className={styles.navbarWrapper}>
+      <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
         <a href="#hero" className={styles.logo}>
-          IC<span>elis</span>
+          <span className={styles.logoIcon}>&lt;Z&gt;</span>
+          <span className={styles.logoName}>izan</span>
+          <span className={styles.logoBadge}>IZAN.DEV</span>
         </a>
         <ul className={styles.links}>
           {sections.map(({ id, label }) => (
@@ -61,8 +64,16 @@ function Navbar() {
             </li>
           ))}
         </ul>
-      </div>
-    </nav>
+        <div className={styles.actions}>
+          <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Toggle theme">
+            {theme === 'dark' ? <FiSun /> : <FiMoon />}
+          </button>
+          <a href="#contact" className={styles.hireBtn}>
+            Hire Me
+          </a>
+        </div>
+      </nav>
+    </div>
   )
 }
 

@@ -26,14 +26,13 @@ function Tecnologias() {
   }, [inView])
 
   return (
-    <section id="tecnologias" ref={ref} className={`${styles.section} fade-in ${inView ? 'visible' : ''}`}>
+    <section id="tech" ref={ref} className={`${styles.section} fade-in ${inView ? 'visible' : ''}`}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Tecnologías</h2>
-        <div className={styles.decorativeLine}></div>
+        <h2 className={styles.title}>TECHNOLOGIES</h2>
         <div className={styles.stats}>
           {stats.map((stat, i) => (
             <div key={stat.label} className={styles.stat}>
-              <span className={styles.statNumber}>{counts[i]}{stat.sufijo}</span>
+              <span className={styles.statNumber}>{counts[i]}{stat.sufijo && <span className={styles.statSuffix}>{stat.sufijo}</span>}</span>
               <span className={styles.statLabel}>{stat.label}</span>
             </div>
           ))}

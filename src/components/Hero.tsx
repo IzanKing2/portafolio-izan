@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 import styles from '../styles/Hero.module.css'
+import { motion } from 'framer-motion'
+import { FiDownload } from 'react-icons/fi'
 
 const frases = [
-  'Código limpio, diseño con criterio, entrega real.',
-  'Full Stack Developer apasionado por el detalle.',
-  'Construyo interfaces que se sienten bien.',
+  'Clean code, thoughtful design, real delivery.',
+  'Full-stack Developer passionate about details.',
+  'Building interfaces that feel right.',
 ]
 
 function Hero() {
@@ -45,17 +47,18 @@ function Hero() {
 
   useEffect(() => {
     const canvas = canvasRef.current
-    const ctx = canvas.getContext('2d')
+    const ctx = canvas?.getContext('2d')
+    if (!ctx || !canvas) return;
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
-    const particles = Array.from({ length: 60 }, () => ({
+    const particles = Array.from({ length: 50 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       vx: (Math.random() - 0.5) * 0.4,
       vy: (Math.random() - 0.5) * 0.4,
-      radius: Math.random() * 2 + 1,
-      opacity: Math.random() * 0.4 + 0.1,
+      radius: Math.random() * 2 + 0.5,
+      opacity: Math.random() * 0.3 + 0.1,
     }))
 
     const mouse = { x: null, y: null }
@@ -142,18 +145,34 @@ function Hero() {
   return (
     <section id="hero" className={styles.hero}>
       <canvas ref={canvasRef} className={styles.canvas}></canvas>
-      <div className={styles.content}>
-        <h1 className={styles.name}>Izan Carlo Celis Afonso</h1>
-        <p className={styles.title}>Desarrollador Web Full Stack</p>
+      <motion.div
+        className={styles.content}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        <h1 className={styles.name}>
+          Building Digital<br/>
+          <span className={styles.accent}>Excellence</span>
+        </h1>
+        <p className={styles.title}>Izan Carlo Celis Afonso</p>
         <p className={styles.phrase}>
           {displayText}
           <span className={styles.cursor}>|</span>
         </p>
-        <div className={styles.actions}>
-          <a href="#proyectos" className={`${styles.btn} ${styles.btnPrimary}`}>Ver proyectos</a>
-          <a href="/cv.pdf" download className={`${styles.btn} ${styles.btnSecondary}`}>Descargar CV</a>
-        </div>
-      </div>
+        <motion.div
+          className={styles.actions}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <a href="#projects" className={`${styles.btn} ${styles.btnPrimary}`}>View Projects</a>
+          <a href="#" className={`${styles.btn} ${styles.btnSecondary}`} download>
+            <FiDownload style={{ marginRight: '0.5rem' }} /> Download CV
+          </a>
+          <a href="#contact" className={`${styles.btn} ${styles.btnSecondary}`}>Contact Me</a>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

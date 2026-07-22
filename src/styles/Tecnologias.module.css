@@ -1,6 +1,6 @@
 .section {
   padding: 6rem 2rem;
-  background-color: var(--color-surface);
+  background-color: transparent;
 }
 
 .container {
@@ -9,15 +9,13 @@
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 800;
   text-align: center;
-}
-
-.decorativeLine {
-  border-bottom: 2px solid var(--color-accent);
-  width: 60px;
-  margin: 0.5rem auto 3rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3rem;
 }
 
 .stats {
@@ -34,8 +32,14 @@
 }
 
 .statNumber {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  display: flex;
+  align-items: baseline;
+}
+
+.statSuffix {
   color: var(--color-accent);
 }
 
@@ -72,11 +76,18 @@
 }
 
 .pill {
-  background-color: #1e1e2e;
+  background-color: transparent;
   color: var(--color-text);
   border-radius: 20px;
-  padding: 0.4rem 1rem;
-  font-size: 0.9rem;
-  border: 1px solid #2a2a3e;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--color-accent);
   display: inline-flex;
+  transition: all 0.3s ease;
+}
+
+[data-theme='light'] .pill {
+  background-color: var(--color-surface);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }

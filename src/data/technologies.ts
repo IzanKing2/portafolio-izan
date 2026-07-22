@@ -10,9 +10,9 @@ export interface TechGroup {
 }
 
 export const stats: Stat[] = [
-  { numero: 8, sufijo: '+', label: 'Tecnologías' },
-  { numero: 3, sufijo: '', label: 'Proyectos reales' },
-  { numero: 1, sufijo: '+', label: 'Año de experiencia' },
+  { numero: 8, sufijo: '+', label: 'Technologies' },
+  { numero: 3, sufijo: '', label: 'Real Projects' },
+  { numero: 1, sufijo: '+', label: 'Year of Experience' },
 ];
 
 export const groups: TechGroup[] = [
@@ -25,7 +25,7 @@ export const groups: TechGroup[] = [
     items: ['PHP', 'Laravel', 'Java', 'Python'],
   },
   {
-    title: 'Sistemas y Herramientas',
+    title: 'Systems & Tools',
     items: ['Docker', 'Ubuntu', 'Git', 'GitHub'],
   },
 ];
