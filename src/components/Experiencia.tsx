@@ -2,28 +2,7 @@ import { useInView } from '../hooks/useInView'
 import { MdWork } from 'react-icons/md'
 import styles from '../styles/Experiencia.module.css'
 
-const experiences = [
-  {
-    empresa: 'Servibyte S.L.',
-    ubicacion: 'San Fernando',
-    rol: 'Desarrollador Web — Beca Cataliza',
-    periodo: '2026 — Actual',
-    descripcion: [
-      'Desarrollo integral de aplicaciones web con soluciones escalables.',
-      'Trabajo en equipo colaborativo y adaptación a requisitos del proyecto.',
-    ],
-  },
-  {
-    empresa: 'Servibyte S.L.',
-    ubicacion: 'San Fernando',
-    rol: 'Desarrollador Web — Prácticas FP Dual',
-    periodo: '2025 — 2026',
-    descripcion: [
-      'Ciclo completo de desarrollo software, backend y frontend.',
-      'Control de versiones, despliegue de proyectos y metodologías ágiles.',
-    ],
-  },
-]
+import { experiences } from '../data/experience'
 
 function Experiencia() {
   const [ref, inView] = useInView()

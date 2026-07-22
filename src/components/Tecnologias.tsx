@@ -2,26 +2,7 @@ import { useState, useEffect } from 'react'
 import { useInView } from '../hooks/useInView'
 import styles from '../styles/Tecnologias.module.css'
 
-const stats = [
-  { numero: 8, sufijo: '+', label: 'Tecnologías' },
-  { numero: 3, sufijo: '', label: 'Proyectos reales' },
-  { numero: 1, sufijo: '+', label: 'Año de experiencia' },
-]
-
-const groups = [
-  {
-    title: 'Frontend',
-    items: ['HTML5', 'CSS3', 'JavaScript', 'Angular'],
-  },
-  {
-    title: 'Backend',
-    items: ['PHP', 'Laravel', 'Java', 'Python'],
-  },
-  {
-    title: 'Sistemas y Herramientas',
-    items: ['Docker', 'Ubuntu', 'Git', 'GitHub'],
-  },
-]
+import { stats, groups } from '../data/technologies'
 
 function Tecnologias() {
   const [ref, inView] = useInView()
