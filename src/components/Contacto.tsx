@@ -53,9 +53,6 @@ function Contacto() {
             <a href="mailto:izanwork2@gmail.com" className={styles.detail}>
               izanwork2@gmail.com
             </a>
-            <a href="tel:+34682202288" className={styles.detail}>
-              +34 682 20 22 88
-            </a>
           </div>
 
           <a
