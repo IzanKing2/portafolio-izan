@@ -14,7 +14,6 @@ export const projects: Project[] = [
     descripcion: 'Collectibles marketplace (Marvel, Stray Kids, Football). Full platform with catalog, cart, favorites, admin panel, and REST API documented with Swagger. Intermodular DAW project.',
     stack: ['Laravel', 'PHP', 'MySQL', 'Docker', 'Nginx', 'JWT', 'Swagger'],
     github: 'https://github.com/IzanKing2/geekzone-ecommerce',
-    demo: '#',
     destacado: true,
   },
   {
@@ -22,7 +21,6 @@ export const projects: Project[] = [
     descripcion: 'Service-oriented architecture with 3 independent Laravel projects: Products API, Users API, and the main store consuming them. Focused on decoupling and scalability.',
     stack: ['Laravel', 'PHP', 'MySQL', 'API REST', 'SOA Architecture'],
     github: 'https://github.com/IzanKing2/03-tienda-muebles-hibrido',
-    demo: '#',
     destacado: false,
   },
   {
@@ -30,7 +28,6 @@ export const projects: Project[] = [
     descripcion: 'Java + Spring Boot REST API for user and note management with 1:N relationships. Includes Jakarta validation, global exception handling, JUnit & Mockito tests, and Postman collection.',
     stack: ['Java', 'Spring Boot', 'MySQL', 'JUnit', 'Mockito', 'Postman'],
     github: 'https://github.com/IzanKing2/API-Notas',
-    demo: '#',
     destacado: false,
   },
 ];

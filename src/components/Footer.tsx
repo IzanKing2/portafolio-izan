@@ -21,7 +21,7 @@ function Footer() {
             <FaGithub />
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/izan-celis-afonso/"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
