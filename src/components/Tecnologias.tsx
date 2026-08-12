@@ -1,53 +1,39 @@
-import { useState, useEffect } from 'react'
-import { useInView } from '../hooks/useInView'
+import { motion } from 'framer-motion'
 import styles from '../styles/Tecnologias.module.css'
-
-import { stats, groups } from '../data/technologies'
+import { groups } from '../data/technologies'
 
 function Tecnologias() {
-  const [ref, inView] = useInView()
-  const [counts, setCounts] = useState(stats.map(() => 0))
-
-  useEffect(() => {
-    if (!inView) return
-
-    const intervals = stats.map((stat, i) => {
-      const step = Math.ceil(1200 / stat.numero)
-      return setInterval(() => {
-        setCounts((prev) => {
-          const next = [...prev]
-          if (next[i] < stat.numero) next[i]++
-          return next
-        })
-      }, step)
-    })
-
-    return () => intervals.forEach(clearInterval)
-  }, [inView])
-
   return (
-    <section id="tech" ref={ref} className={`${styles.section} fade-in ${inView ? 'visible' : ''}`}>
+    <section id="tech" className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>TECHNOLOGIES</h2>
-        <div className={styles.stats}>
-          {stats.map((stat, i) => (
-            <div key={stat.label} className={styles.stat}>
-              <span className={styles.statNumber}>{counts[i]}{stat.sufijo && <span className={styles.statSuffix}>{stat.sufijo}</span>}</span>
-              <span className={styles.statLabel}>{stat.label}</span>
-            </div>
-          ))}
+        <div className={styles.header}>
+          <span className={styles.eyebrow}>03 — Stack</span>
+          <h2 className={styles.title}>Technical Toolkit</h2>
         </div>
-        <div className={styles.groups}>
-          {groups.map((group) => (
-            <div key={group.title} className={styles.group}>
-              <h3 className={styles.groupTitle}>{group.title}</h3>
-              <div className={styles.pills}>
-                {group.items.map((item) => (
-                  <span key={item} className={styles.pill}>{item}</span>
-                ))}
-              </div>
-            </div>
-          ))}
+
+        <div className={styles.rows}>
+          {groups.map((group, i) => {
+            const highlighted = group.title === 'AI & Method'
+            return (
+              <motion.div
+                key={group.title}
+                className={`${styles.row} ${highlighted ? styles.highlight : ''}`}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
+              >
+                <span className={styles.rowLabel}>{group.title}</span>
+                <div className={styles.pills}>
+                  {group.items.map((item) => (
+                    <span key={item} className={styles.pill}>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>

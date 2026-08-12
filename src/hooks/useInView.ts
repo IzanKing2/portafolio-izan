@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 
-export function useInView(options = {}) {
-  const ref = useRef(null)
+export function useInView<T extends HTMLElement = HTMLElement>(
+  options: IntersectionObserverInit = {}
+) {
+  const ref = useRef<T | null>(null)
   const [inView, setInView] = useState(false)
 
   useEffect(() => {
@@ -16,5 +18,5 @@ export function useInView(options = {}) {
     return () => observer.disconnect()
   }, [])
 
-  return [ref, inView]
+  return [ref, inView] as const
 }

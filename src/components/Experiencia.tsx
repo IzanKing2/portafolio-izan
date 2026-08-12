@@ -1,36 +1,37 @@
-import { MdWork } from 'react-icons/md'
-import styles from '../styles/Experiencia.module.css'
 import { motion } from 'framer-motion'
-
+import styles from '../styles/Experiencia.module.css'
 import { experiences } from '../data/experience'
 
 function Experiencia() {
-
   return (
     <section id="experience" className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.title}>EXPERIENCE</h2>
+        <div className={styles.header}>
+          <span className={styles.eyebrow}>04 — Career</span>
+          <h2 className={styles.title}>Experience</h2>
         </div>
+
         <div className={styles.timeline}>
           {experiences.map((exp, index) => (
-            <motion.div 
-              key={exp.periodo} 
+            <motion.div
+              key={exp.periodo}
               className={styles.item}
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.5, delay: index * 0.12 }}
             >
-              <div className={`${styles.dot} ${index === 0 ? styles.activeDot : ''}`}></div>
-              <div className={styles.card}>
-                <div className={styles.cardHeader}>
-                  <div>
-                    <h3 className={styles.role}>{exp.rol}</h3>
-                    <p className={styles.company}>{exp.empresa} · {exp.ubicacion}</p>
-                  </div>
-                  <span className={styles.period}>{exp.periodo}</span>
-                </div>
+              <span className={styles.period}>{exp.periodo}</span>
+
+              <div className={styles.rail}>
+                <span className={`${styles.dot} ${index === 0 ? styles.dotActive : ''}`} />
+              </div>
+
+              <div className={styles.content}>
+                <h3 className={styles.role}>{exp.rol}</h3>
+                <p className={styles.company}>
+                  {exp.empresa} <span className={styles.sep}>·</span> {exp.ubicacion}
+                </p>
                 <ul className={styles.description}>
                   {exp.descripcion.map((line) => (
                     <li key={line}>{line}</li>

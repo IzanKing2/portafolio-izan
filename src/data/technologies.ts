@@ -10,22 +10,32 @@ export interface TechGroup {
 }
 
 export const stats: Stat[] = [
-  { numero: 8, sufijo: '+', label: 'Technologies' },
-  { numero: 3, sufijo: '', label: 'Real Projects' },
+  { numero: 16, sufijo: '+', label: 'Technologies' },
+  { numero: 4, sufijo: '', label: 'Shipped Projects' },
   { numero: 1, sufijo: '+', label: 'Year of Experience' },
 ];
 
 export const groups: TechGroup[] = [
   {
     title: 'Frontend',
-    items: ['HTML5', 'CSS3', 'JavaScript', 'Angular'],
+    items: ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Angular', 'TailwindCSS'],
   },
   {
     title: 'Backend',
-    items: ['PHP', 'Laravel', 'Java', 'Python'],
+    items: ['PHP', 'Laravel', 'Java', 'Spring Boot', 'Python', 'Supabase', 'REST APIs'],
   },
   {
     title: 'Systems & Tools',
-    items: ['Docker', 'Ubuntu', 'Git', 'GitHub'],
+    items: ['Docker', 'Ubuntu', 'Nginx', 'MySQL', 'PostgreSQL', 'Git', 'GitHub Actions', 'Vercel'],
+  },
+  {
+    title: 'AI & Method',
+    items: [
+      'Claude Code',
+      'Spec-Driven Development',
+      'AI-Assisted Refactoring',
+      'Automated Test Loops',
+      'Context Engineering',
+    ],
   },
 ];

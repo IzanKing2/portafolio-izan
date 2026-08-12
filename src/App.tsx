@@ -5,10 +5,11 @@ import Hero from './components/Hero'
 import Footer from './components/Footer'
 import SEO from './components/SEO'
 
-const SobreMi = lazy(() => import('./components/SobreMi'))
-const Tecnologias = lazy(() => import('./components/Tecnologias'))
 const Proyectos = lazy(() => import('./components/Proyectos'))
+const Method = lazy(() => import('./components/Method'))
+const Tecnologias = lazy(() => import('./components/Tecnologias'))
 const Experiencia = lazy(() => import('./components/Experiencia'))
+const SobreMi = lazy(() => import('./components/SobreMi'))
 const Contacto = lazy(() => import('./components/Contacto'))
 
 function App() {
@@ -19,11 +20,12 @@ function App() {
       <Navbar />
       <Hero />
       <main>
-        <Suspense fallback={<div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Cargando...</div>}>
-          <SobreMi />
-          <Tecnologias />
+        <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
           <Proyectos />
+          <Method />
+          <Tecnologias />
           <Experiencia />
+          <SobreMi />
           <Contacto />
         </Suspense>
       </main>
