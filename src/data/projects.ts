@@ -2,13 +2,20 @@ export interface Project {
   titulo: string;
   descripcion: string;
   stack: string[];
-  github: string;
+  github?: string;
   destacado: boolean;
   imagen?: string;
   demo?: string;
 }
 
 export const projects: Project[] = [
+  {
+    titulo: 'SaborSemanal',
+    descripcion: 'Weekly meal planner. Add, edit and publish recipes, then generate your shopping list automatically to simplify weekly planning and grocery runs.',
+    stack: ['React', 'Next.js', 'Supabase', 'TailwindCSS'],
+    demo: 'https://saborsemanal.vercel.app/',
+    destacado: true,
+  },
   {
     titulo: 'GeekZone — E-commerce',
     descripcion: 'Collectibles marketplace (Marvel, Stray Kids, Football). Full platform with catalog, cart, favorites, admin panel, and REST API documented with Swagger. Intermodular DAW project.',
