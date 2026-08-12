@@ -9,7 +9,7 @@ import { projects } from '../data/projects'
 function Projects() {
   const [ref, inView] = useInView()
   const [filter, setFilter] = useState('All')
-  const categories = ['All', 'Laravel', 'Java', 'API REST']
+  const categories = ['All', 'React', 'Laravel', 'Java', 'API REST']
 
   const filteredProjects = projects.filter(project => 
     filter === 'All' || project.stack.includes(filter)
@@ -61,14 +61,16 @@ function Projects() {
                   ))}
                 </div>
                 <div className={styles.links}>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.link}
-                  >
-                    <FaGithub /> View Code
-                  </a>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.link}
+                    >
+                      <FaGithub /> View Code
+                    </a>
+                  )}
                   {project.demo && (
                     <a
                       href={project.demo}
