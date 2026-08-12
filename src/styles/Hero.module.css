@@ -35,7 +35,18 @@
 }
 
 .accent {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #ffea8c 50%, var(--color-accent) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: var(--color-accent);
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
 .title {

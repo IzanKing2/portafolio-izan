@@ -1,5 +1,6 @@
 import styles from '../styles/SobreMi.module.css'
 import { motion } from 'framer-motion'
+import profilePhoto from '../assets/profile_iz.png'
 
 const values = [
   'Proactive',
@@ -38,7 +39,9 @@ function SobreMi() {
           </div>
         </div>
         <div className={styles.avatarColumn}>
-          <div className={styles.avatar}>Photo</div>
+          <div className={styles.avatar}>
+            <img src={profilePhoto} alt="Izan Carlo Celis Afonso" className={styles.avatarImg} />
+          </div>
         </div>
         </div>
       </motion.div>

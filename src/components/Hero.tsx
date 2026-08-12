@@ -167,7 +167,11 @@ function Hero() {
           transition={{ delay: 0.5, duration: 0.8 }}
         >
           <a href="#projects" className={`${styles.btn} ${styles.btnPrimary}`}>View Projects</a>
-          <a href="#" className={`${styles.btn} ${styles.btnSecondary}`} download>
+          <a
+            href="/Izan_CV.pdf"
+            className={`${styles.btn} ${styles.btnSecondary}`}
+            download="Izan_Carlo_Celis_Afonso_CV.pdf"
+          >
             <FiDownload style={{ marginRight: '0.5rem' }} /> Download CV
           </a>
           <a href="#contact" className={`${styles.btn} ${styles.btnSecondary}`}>Contact Me</a>
