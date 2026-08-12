@@ -1,6 +1,5 @@
 .section {
   padding: 6rem 2rem;
-  background-color: transparent;
 }
 
 .container {
@@ -8,86 +7,108 @@
   margin: 0 auto;
 }
 
-.title {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 800;
-  text-align: center;
-  color: var(--color-accent);
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 3rem;
+  color: var(--color-accent-text);
+  margin-bottom: 0.6rem;
 }
 
-.stats {
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-  margin-bottom: 3rem;
+.title {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-text);
 }
 
-.stat {
+.rows {
   display: flex;
   flex-direction: column;
+  gap: 0.85rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.5rem;
   align-items: center;
+  padding: 1rem 1.35rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-.statNumber {
-  font-size: 3.5rem;
-  font-weight: 800;
+.row:hover {
+  border-color: var(--color-border-strong);
+  transform: translateX(4px);
+}
+
+/* The AI row is the point of the section, so it carries the accent. */
+.highlight {
+  border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-soft) 0%,
+    var(--color-surface) 55%
+  );
+}
+
+.highlight .rowLabel {
+  color: var(--color-accent-text);
+}
+
+.rowLabel {
+  font-size: 0.95rem;
+  font-weight: 700;
   color: var(--color-text);
-  display: flex;
-  align-items: baseline;
-}
-
-.statSuffix {
-  color: var(--color-accent);
-}
-
-.statLabel {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.groups {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.group {
-  flex: 1;
-  min-width: 220px;
-}
-
-.groupTitle {
-  color: var(--color-accent);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
 }
 
 .pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
 .pill {
-  background-color: transparent;
+  background-color: var(--color-surface-2);
   color: var(--color-text);
-  border-radius: 20px;
-  padding: 0.5rem 1.25rem;
-  font-size: 0.95rem;
-  border: 1px solid var(--color-accent);
-  display: inline-flex;
-  transition: all 0.3s ease;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
-[data-theme='light'] .pill {
-  background-color: var(--color-surface);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+.pill:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent-text);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 760px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .row:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 4rem 1.25rem;
+  }
 }

@@ -1,135 +1,71 @@
-import { useState } from 'react'
-import { MdEmail, MdPhone, MdCheckCircle } from 'react-icons/md'
-import { FaGithub } from 'react-icons/fa'
-import { useInView } from '../hooks/useInView'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { MdEmail } from 'react-icons/md'
+import { FiArrowUpRight } from 'react-icons/fi'
 import styles from '../styles/Contacto.module.css'
 
+const socials = [
+  { href: 'https://github.com/IzanKing2', label: 'GitHub Profile', Icon: FaGithub },
+  {
+    href: 'https://www.linkedin.com/in/izan-celis-afonso/',
+    label: 'LinkedIn Profile',
+    Icon: FaLinkedin,
+  },
+  { href: 'mailto:izanwork2@gmail.com', label: 'Send Email', Icon: MdEmail },
+]
+
 function Contacto() {
-  const [form, setForm] = useState({ nombre: '', email: '', mensaje: '' })
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [ref, inView] = useInView()
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Simulate network request
-    setTimeout(() => setIsSubmitted(true), 500)
-  }
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
   return (
-    <section id="contact" ref={ref} className={`${styles.section} fade-in ${inView ? 'visible' : ''}`}>
-      <h2 className={styles.title}>CONTACT</h2>
-      <div className={styles.container}>
-        <div className={styles.left}>
-          <p className={styles.intro}>
-            Have a project in mind or looking for a developer?
-            Let's talk.
-          </p>
-          <div className={styles.contacts}>
-            <a href="mailto:izanwork2@gmail.com" className={styles.contactCard} aria-label="Send Email">
-              <div className={styles.iconWrapper}>
-                <MdEmail />
-              </div>
-              <div className={styles.contactDetails}>
-                <span className={styles.contactLabel}>Email</span>
-                <span className={styles.contactValue}>izanwork2@gmail.com</span>
-              </div>
-            </a>
-            <a
-              href="https://github.com/IzanKing2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.contactCard}
-              aria-label="GitHub Profile"
-            >
-              <div className={styles.iconWrapper}>
-                <FaGithub />
-              </div>
-              <div className={styles.contactDetails}>
-                <span className={styles.contactLabel}>GitHub</span>
-                <span className={styles.contactValue}>github.com/IzanKing2</span>
-              </div>
-            </a>
-            <a href="tel:+34682202288" className={styles.contactCard} aria-label="Call Phone">
-              <div className={styles.iconWrapper}>
-                <MdPhone />
-              </div>
-              <div className={styles.contactDetails}>
-                <span className={styles.contactLabel}>Phone</span>
-                <span className={styles.contactValue}>+34 682 20 22 88</span>
-              </div>
-            </a>
+    <section id="contact" className={styles.section}>
+      <motion.div
+        className={styles.block}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className={styles.top}>
+          <span className={styles.eyebrow}>06 — Contact</span>
+          <div className={styles.socials}>
+            {socials.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className={styles.socialLink}
+                aria-label={label}
+              >
+                <Icon />
+              </a>
+            ))}
           </div>
         </div>
-        <div className={styles.right}>
-          <AnimatePresence mode="wait">
-            {!isSubmitted ? (
-              <motion.form 
-                key="form"
-                className={styles.form} 
-                onSubmit={handleSubmit}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className={styles.field}>
-                  <label htmlFor="nombre" className={styles.label}>Name</label>
-                  <input
-                    id="nombre"
-                    name="nombre"
-                    type="text"
-                    required
-                    className={styles.input}
-                    value={form.nombre}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className={styles.field}>
-                  <label htmlFor="email" className={styles.label}>Email</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className={styles.input}
-                    value={form.email}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className={styles.field}>
-                  <label htmlFor="mensaje" className={styles.label}>Message</label>
-                  <textarea
-                    id="mensaje"
-                    name="mensaje"
-                    required
-                    className={styles.textarea}
-                    value={form.mensaje}
-                    onChange={handleChange}
-                  />
-                </div>
-                <button type="submit" className={styles.submit}>Send Message</button>
-              </motion.form>
-            ) : (
-              <motion.div
-                key="success"
-                className={styles.successCard}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <MdCheckCircle className={styles.successIcon} />
-                <h3>Message Sent!</h3>
-                <p>Thank you, Izan will get back to you soon.</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+
+        <h2 className={styles.headline}>
+          Let&rsquo;s build
+          <br />
+          something useful.
+        </h2>
+
+        <div className={styles.bottom}>
+          <div className={styles.details}>
+            <a href="mailto:izanwork2@gmail.com" className={styles.detail}>
+              izanwork2@gmail.com
+            </a>
+            <a href="tel:+34682202288" className={styles.detail}>
+              +34 682 20 22 88
+            </a>
+          </div>
+
+          <a
+            href="mailto:izanwork2@gmail.com?subject=Let%27s%20work%20together"
+            className={styles.send}
+          >
+            Send Message <FiArrowUpRight />
+          </a>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

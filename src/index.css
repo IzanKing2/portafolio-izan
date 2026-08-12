@@ -1,18 +1,57 @@
 :root {
-  --color-bg: #0a0a0f;
-  --color-surface: #13131a;
+  /* Surfaces */
+  --color-bg: #09090b;
+  --color-bg-soft: #0d0d11;
+  --color-surface: #121216;
+  --color-surface-2: #17171d;
+
+  /* Lines */
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+  --grid-line: rgba(255, 255, 255, 0.028);
+
+  /* Type */
+  --color-text: #ededf0;
+  --color-text-muted: #8e8e99;
+
+  /* Accent: --accent fills, --accent-text reads on the page background,
+     --accent-ink reads on top of an accent fill. */
   --color-accent: #f5c400;
-  --color-text: #e8e8f0;
-  --color-text-muted: #9a9ab0;
-  --font-main: 'Inter', sans-serif;
-  --max-width: 1100px;
+  --color-accent-text: #f5c400;
+  --color-accent-ink: #0a0a0c;
+  --color-accent-soft: rgba(245, 196, 0, 0.12);
+  --color-success: #4ade80;
+
+  --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.45);
+
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --max-width: 1200px;
+  --radius: 14px;
+  --radius-sm: 8px;
 }
 
 [data-theme='light'] {
-  --color-bg: #fafafa;
+  --color-bg: #f6f6f4;
+  --color-bg-soft: #fdfdfc;
   --color-surface: #ffffff;
-  --color-text: #111111;
-  --color-text-muted: #555555;
+  --color-surface-2: #f2f2ef;
+
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-strong: rgba(0, 0, 0, 0.2);
+  --grid-line: rgba(0, 0, 0, 0.035);
+
+  --color-text: #131316;
+  --color-text-muted: #5d5d67;
+
+  /* Fills stay the same yellow; text switches to a darker gold so it
+     stays readable against a light background. */
+  --color-accent-text: #7a5d00;
+  --color-accent-soft: rgba(245, 196, 0, 0.18);
+  --color-success: #12924c;
+
+  --shadow-card: 0 14px 40px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -22,18 +61,19 @@
   cursor: none;
 }
 
-a, button {
+a,
+button {
   cursor: none;
+  font-family: inherit;
 }
 
 html {
   scroll-behavior: smooth;
-  /* Scrollbar styles for Firefox */
+  scroll-padding-top: 6rem;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-surface) var(--color-bg);
+  scrollbar-color: var(--color-surface-2) var(--color-bg);
 }
 
-/* Scrollbar styles for Chrome/Edge/Safari */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -44,7 +84,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-surface);
+  background: var(--color-surface-2);
   border-radius: 4px;
   border: 1px solid var(--color-bg);
 }
@@ -53,15 +93,67 @@ html {
   background: var(--color-accent);
 }
 
-[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
-  background: #111111;
-}
-
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-main);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Ambient blueprint grid + a warm bloom behind the top of the page. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -30vh;
+  left: 50%;
+  width: 120vw;
+  height: 90vh;
+  transform: translateX(-50%);
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(245, 196, 0, 0.07) 0%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+[data-theme='light'] body::after {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(245, 196, 0, 0.16) 0%,
+    transparent 62%
+  );
+}
+
+/* Shared building blocks */
+.section-shell {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-text);
 }
 
 .fade-in {
@@ -75,10 +167,22 @@ body {
   transform: translateY(0);
 }
 
-.fade-in.visible * {
-  opacity: 1 !important;
+@media (max-width: 640px) {
+  .section-shell {
+    padding: 4rem 1.25rem;
+  }
 }
 
-.fade-in-delay-1 { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-.fade-in-delay-3 { transition-delay: 0.3s; }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
