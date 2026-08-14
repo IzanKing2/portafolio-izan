@@ -10,6 +10,9 @@ export function localizedUrl(locale: Locale, path = ''): string {
   return `${SITE_URL}/${locale}${path}`;
 }
 
+/** Absolute URL to the default social-sharing image (used for og:image / twitter:image). */
+export const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
+
 export const ogLocaleMap: Record<Locale, string> = {
   es: 'es_ES',
   en: 'en_US',
