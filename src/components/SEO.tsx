@@ -1,7 +1,7 @@
 import { Head } from 'vite-react-ssg'
 import { useTranslation } from '../i18n/I18nProvider'
 import { locales, defaultLocale } from '../i18n/config'
-import { localizedUrl, ogLocaleMap } from '../i18n/site'
+import { localizedUrl, ogLocaleMap, OG_IMAGE_URL } from '../i18n/site'
 
 interface SEOProps {
   path?: string
@@ -9,6 +9,7 @@ interface SEOProps {
   description?: string
   name?: string
   type?: string
+  image?: string
 }
 
 export default function SEO({
@@ -17,6 +18,7 @@ export default function SEO({
   description,
   name = 'Izan Carlo Celis Afonso',
   type = 'website',
+  image = OG_IMAGE_URL,
 }: SEOProps) {
   const { t, locale } = useTranslation()
   const resolvedTitle = title ?? t('seo.defaultTitle')
@@ -40,6 +42,10 @@ export default function SEO({
       <meta property="og:title" content={resolvedTitle} />
       <meta property="og:description" content={resolvedDescription} />
       <meta property="og:url" content={canonical} />
+      <meta property="og:image" content={image} />
+      <meta property="og:image:width" content="1254" />
+      <meta property="og:image:height" content="1254" />
+      <meta property="og:image:alt" content={name} />
       <meta property="og:locale" content={ogLocaleMap[locale]} />
       {locales
         .filter((l) => l !== locale)
@@ -52,6 +58,7 @@ export default function SEO({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={resolvedTitle} />
       <meta name="twitter:description" content={resolvedDescription} />
+      <meta name="twitter:image" content={image} />
     </Head>
   )
 }
