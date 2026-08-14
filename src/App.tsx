@@ -1,37 +1,16 @@
-import { Suspense, lazy } from 'react'
-import CustomCursor from './components/CustomCursor'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Footer from './components/Footer'
-import SEO from './components/SEO'
+import type { RouteRecord } from 'vite-react-ssg'
+import Home from './pages/Home'
+import RootRedirect from './components/RootRedirect'
+import { locales } from './i18n/config'
 
-const Proyectos = lazy(() => import('./components/Proyectos'))
-const Method = lazy(() => import('./components/Method'))
-const Tecnologias = lazy(() => import('./components/Tecnologias'))
-const Experiencia = lazy(() => import('./components/Experiencia'))
-const SobreMi = lazy(() => import('./components/SobreMi'))
-const Contacto = lazy(() => import('./components/Contacto'))
-
-function App() {
-  return (
-    <>
-      <SEO />
-      <CustomCursor />
-      <Navbar />
-      <Hero />
-      <main>
-        <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
-          <Proyectos />
-          <Method />
-          <Tecnologias />
-          <Experiencia />
-          <SobreMi />
-          <Contacto />
-        </Suspense>
-      </main>
-      <Footer />
-    </>
-  )
-}
-
-export default App
+export const routes: RouteRecord[] = [
+  {
+    path: '/:lang',
+    Component: Home,
+    getStaticPaths: () => [...locales],
+  },
+  {
+    path: '/',
+    Component: RootRedirect,
+  },
+]

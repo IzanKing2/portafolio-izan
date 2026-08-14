@@ -4,12 +4,15 @@ import { FaGithub } from 'react-icons/fa'
 import { FiExternalLink } from 'react-icons/fi'
 import ProjectPreview from './ProjectPreview'
 import styles from '../styles/Proyectos.module.css'
-import { projects } from '../data/projects'
+import { getProjects } from '../data/projects'
+import { useTranslation } from '../i18n/I18nProvider'
 
 const categories = ['All', 'React', 'Laravel', 'Java']
 
 function Projects() {
+  const { t, locale } = useTranslation()
   const [filter, setFilter] = useState('All')
+  const projects = getProjects(locale)
 
   const filteredProjects = projects.filter(
     (project) => filter === 'All' || project.stack.includes(filter)
@@ -20,8 +23,8 @@ function Projects() {
       <div className={styles.container}>
         <div className={styles.header}>
           <div>
-            <span className={styles.eyebrow}>01 — Portfolio</span>
-            <h2 className={styles.title}>Selected Work</h2>
+            <span className={styles.eyebrow}>{t('projects.eyebrow')}</span>
+            <h2 className={styles.title}>{t('projects.title')}</h2>
           </div>
 
           <div className={styles.filters}>
@@ -31,7 +34,7 @@ function Projects() {
                 className={`${styles.filterBtn} ${filter === cat ? styles.activeFilter : ''}`}
                 onClick={() => setFilter(cat)}
               >
-                {cat}
+                {cat === 'All' ? t('projects.filterAll') : cat}
               </button>
             ))}
           </div>
@@ -42,7 +45,7 @@ function Projects() {
             {filteredProjects.map((project, index) => (
               <motion.article
                 layout
-                key={project.titulo}
+                key={project.id}
                 className={`${styles.card} ${index === 0 ? styles.featured : ''}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +62,7 @@ function Projects() {
                       addressBar={project.addressBar}
                     />
                   )}
-                  {project.demo && <span className={styles.liveTag}>Live</span>}
+                  {project.demo && <span className={styles.liveTag}>{t('projects.live')}</span>}
                 </div>
 
                 <div className={styles.body}>
@@ -86,7 +89,7 @@ function Projects() {
                         rel="noopener noreferrer"
                         className={`${styles.link} ${styles.linkPrimary}`}
                       >
-                        <FiExternalLink /> Live Demo
+                        <FiExternalLink /> {t('projects.liveDemo')}
                       </a>
                     )}
                     {project.github && (
@@ -96,7 +99,7 @@ function Projects() {
                         rel="noopener noreferrer"
                         className={styles.link}
                       >
-                        <FaGithub /> View Code
+                        <FaGithub /> {t('projects.viewCode')}
                       </a>
                     )}
                   </div>

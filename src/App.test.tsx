@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import Hero from './components/Hero';
 import Proyectos from './components/Proyectos';
@@ -7,6 +7,7 @@ import Tecnologias from './components/Tecnologias';
 import SobreMi from './components/SobreMi';
 import Experiencia from './components/Experiencia';
 import Contacto from './components/Contacto';
+import { renderWithProviders } from './test-utils';
 
 class MockIntersectionObserver {
   observe = vi.fn();
@@ -22,25 +23,30 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 describe('sections', () => {
-  it('renders Hero', () => { render(<Hero />); });
-  it('renders Proyectos', () => { render(<Proyectos />); });
-  it('renders Method', () => { render(<Method />); });
-  it('renders Tecnologias', () => { render(<Tecnologias />); });
-  it('renders SobreMi', () => { render(<SobreMi />); });
-  it('renders Experiencia', () => { render(<Experiencia />); });
-  it('renders Contacto', () => { render(<Contacto />); });
+  it('renders Hero', () => { renderWithProviders(<Hero />); });
+  it('renders Proyectos', () => { renderWithProviders(<Proyectos />); });
+  it('renders Method', () => { renderWithProviders(<Method />); });
+  it('renders Tecnologias', () => { renderWithProviders(<Tecnologias />); });
+  it('renders SobreMi', () => { renderWithProviders(<SobreMi />); });
+  it('renders Experiencia', () => { renderWithProviders(<Experiencia />); });
+  it('renders Contacto', () => { renderWithProviders(<Contacto />); });
 });
 
 describe('content', () => {
   it('surfaces the AI-augmented delivery method', () => {
-    render(<Method />);
+    renderWithProviders(<Method />, { locale: 'en' });
     expect(screen.getByText('AI-Augmented Delivery')).toBeInTheDocument();
     expect(screen.getByText('Spec first, code second')).toBeInTheDocument();
   });
 
   it('lists the live project demo', () => {
-    render(<Proyectos />);
+    renderWithProviders(<Proyectos />, { locale: 'en' });
     const demo = screen.getAllByText('Live Demo')[0].closest('a');
     expect(demo).toHaveAttribute('href', 'https://saborsemanal.vercel.app/');
+  });
+
+  it('renders translated content in Spanish', () => {
+    renderWithProviders(<Method />, { locale: 'es' });
+    expect(screen.getByText('Entrega asistida por IA')).toBeInTheDocument();
   });
 });

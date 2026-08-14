@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { FiDownload, FiArrowRight } from 'react-icons/fi'
 import ArchitectureDiagram from './ArchitectureDiagram'
 import styles from '../styles/Hero.module.css'
+import { useTranslation } from '../i18n/I18nProvider'
 
 interface Particle {
   x: number
@@ -14,6 +15,7 @@ interface Particle {
 }
 
 function Hero() {
+  const { t } = useTranslation()
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const animRef = useRef<number | null>(null)
 
@@ -118,30 +120,26 @@ function Hero() {
         >
           <span className={styles.badge}>
             <span className={styles.badgeDot} />
-            Available for opportunities
+            {t('hero.badge')}
           </span>
 
-          <h1 className={styles.headline}>
-            Full-stack development from UI to infrastructure.
-          </h1>
+          <h1 className={styles.headline}>{t('hero.headline')}</h1>
 
           <p className={styles.subline}>
-            I build and ship complete web products — interface, API, database and deployment.
-            I also work with AI as an engineering instrument rather than a shortcut:
-            <strong> spec-driven development</strong> lets me deliver in stacks I was never
-            formally taught, at the same standard as the ones I was.
+            {t('hero.sublinePre')}
+            <strong> {t('hero.sublineStrong')}</strong> {t('hero.sublinePost')}
           </p>
 
           <div className={styles.actions}>
             <a href="#projects" className={`${styles.btn} ${styles.btnPrimary}`}>
-              View Projects <FiArrowRight />
+              {t('hero.ctaProjects')} <FiArrowRight />
             </a>
             <a
               href="/Izan_CV.pdf"
               className={`${styles.btn} ${styles.btnGhost}`}
               download="Izan_Carlo_Celis_Afonso_CV.pdf"
             >
-              <FiDownload /> Download CV
+              <FiDownload /> {t('hero.ctaDownloadCv')}
             </a>
           </div>
         </motion.div>

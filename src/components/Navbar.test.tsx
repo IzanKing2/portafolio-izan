@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import Navbar from './Navbar';
+import { renderWithProviders } from '../test-utils';
 
 // Mock IntersectionObserver
 class MockIntersectionObserver {
@@ -27,7 +28,7 @@ Object.defineProperty(window, 'matchMedia', {
 
 describe('Navbar', () => {
   it('renders navigation links', () => {
-    render(<Navbar />);
+    renderWithProviders(<Navbar />, { locale: 'en' });
     expect(screen.getByText('Work')).toBeInTheDocument();
     expect(screen.getByText('Method')).toBeInTheDocument();
     expect(screen.getByText('Tech')).toBeInTheDocument();
@@ -36,7 +37,18 @@ describe('Navbar', () => {
   });
 
   it('renders the contact call to action', () => {
-    render(<Navbar />);
+    renderWithProviders(<Navbar />, { locale: 'en' });
     expect(screen.getByText(/Let.s talk/)).toBeInTheDocument();
+  });
+
+  it('renders translated navigation links in Spanish', () => {
+    renderWithProviders(<Navbar />, { locale: 'es' });
+    expect(screen.getByText('Proyectos')).toBeInTheDocument();
+    expect(screen.getByText('Hablemos')).toBeInTheDocument();
+  });
+
+  it('renders a language switcher pointing to the other locale', () => {
+    renderWithProviders(<Navbar />, { locale: 'en' });
+    expect(screen.getByText('ES')).toBeInTheDocument();
   });
 });

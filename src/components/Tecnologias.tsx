@@ -1,22 +1,26 @@
 import { motion } from 'framer-motion'
 import styles from '../styles/Tecnologias.module.css'
-import { groups } from '../data/technologies'
+import { getTechGroups } from '../data/technologies'
+import { useTranslation } from '../i18n/I18nProvider'
 
 function Tecnologias() {
+  const { t, locale } = useTranslation()
+  const groups = getTechGroups(locale)
+
   return (
     <section id="tech" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.eyebrow}>03 — Stack</span>
-          <h2 className={styles.title}>Technical Toolkit</h2>
+          <span className={styles.eyebrow}>{t('tech.eyebrow')}</span>
+          <h2 className={styles.title}>{t('tech.title')}</h2>
         </div>
 
         <div className={styles.rows}>
           {groups.map((group, i) => {
-            const highlighted = group.title === 'AI & Method'
+            const highlighted = group.id === 'ai-method'
             return (
               <motion.div
-                key={group.title}
+                key={group.id}
                 className={`${styles.row} ${highlighted ? styles.highlight : ''}`}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}

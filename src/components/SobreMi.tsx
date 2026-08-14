@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from '../hooks/useInView'
-import { stats } from '../data/technologies'
+import { getStats } from '../data/technologies'
 import profilePhoto from '../assets/profile_iz.png'
 import styles from '../styles/SobreMi.module.css'
-
-const values = ['Proactive', 'Team Player', 'Adaptable', 'Detail-Oriented', 'UI/UX']
+import { useTranslation } from '../i18n/I18nProvider'
 
 function SobreMi() {
+  const { t, locale } = useTranslation()
+  const stats = getStats(locale)
+  const values = [t('about.value1'), t('about.value2'), t('about.value3'), t('about.value4'), t('about.value5')]
   const [ref, inView] = useInView<HTMLElement>()
   const [counts, setCounts] = useState(() => stats.map(() => 0))
 
@@ -27,6 +29,7 @@ function SobreMi() {
     })
 
     return () => intervals.forEach(clearInterval)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView])
 
   return (
@@ -44,11 +47,11 @@ function SobreMi() {
               <span className={`${styles.dot} ${styles.dotRed}`} />
               <span className={`${styles.dot} ${styles.dotAmber}`} />
               <span className={`${styles.dot} ${styles.dotGreen}`} />
-              <span className={styles.terminalTitle}>~/izan — whoami</span>
+              <span className={styles.terminalTitle}>{t('about.terminalTitle')}</span>
             </div>
             <img src={profilePhoto} alt="Izan Carlo Celis Afonso" className={styles.photo} />
             <div className={styles.terminalFooter}>
-              <span className={styles.prompt}>$</span> izan --role &quot;full-stack developer&quot;
+              <span className={styles.prompt}>$</span> {t('about.terminalFooter')}
             </div>
           </div>
         </motion.div>
@@ -60,25 +63,12 @@ function SobreMi() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <span className={styles.eyebrow}>05 — Profile</span>
-          <h2 className={styles.title}>About</h2>
+          <span className={styles.eyebrow}>{t('about.eyebrow')}</span>
+          <h2 className={styles.title}>{t('about.title')}</h2>
 
-          <p className={styles.text}>
-            I&rsquo;m a Full Stack Web Developer with a degree in Web Application Development
-            (DAW) and over a year of hands-on experience at Servibyte S.L. I build interfaces
-            that don&rsquo;t just work but feel right, and back them with APIs and infrastructure
-            that hold up.
-          </p>
-          <p className={styles.text}>
-            What changed my range is how I work: I write the specification first, then use AI to
-            move fast inside it, and verify everything before it ships. That is what let me take
-            a product live on <strong>Next.js and Supabase</strong> — a stack I was never taught
-            in class — without lowering the bar on quality.
-          </p>
-          <p className={styles.text}>
-            I work with independent judgment, learn quickly, and I&rsquo;m at my best on a team
-            that reviews each other&rsquo;s work.
-          </p>
+          <p className={styles.text}>{t('about.p1')}</p>
+          <p className={styles.text}>{t('about.p2')}</p>
+          <p className={styles.text}>{t('about.p3')}</p>
 
           <div className={styles.values}>
             {values.map((v) => (
@@ -90,7 +80,7 @@ function SobreMi() {
 
           <div className={styles.stats}>
             {stats.map((stat, i) => (
-              <div key={stat.label} className={styles.stat}>
+              <div key={stat.id} className={styles.stat}>
                 <span className={styles.statNumber}>
                   {counts[i]}
                   {stat.sufijo && <span className={styles.statSuffix}>{stat.sufijo}</span>}

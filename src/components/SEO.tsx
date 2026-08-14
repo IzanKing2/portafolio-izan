@@ -1,32 +1,57 @@
-import { Helmet } from 'react-helmet-async';
+import { Head } from 'vite-react-ssg'
+import { useTranslation } from '../i18n/I18nProvider'
+import { locales, defaultLocale } from '../i18n/config'
+import { localizedUrl, ogLocaleMap } from '../i18n/site'
 
 interface SEOProps {
-  title?: string;
-  description?: string;
-  name?: string;
-  type?: string;
+  path?: string
+  title?: string
+  description?: string
+  name?: string
+  type?: string
 }
 
 export default function SEO({
-  title = 'Izan Carlo Celis Afonso | Desarrollador Web Full Stack',
-  description = 'Portafolio de Izan Carlo Celis Afonso, Desarrollador Web Full Stack. Proyectos, experiencia y tecnologías.',
+  path = '',
+  title,
+  description,
   name = 'Izan Carlo Celis Afonso',
-  type = 'website'
+  type = 'website',
 }: SEOProps) {
+  const { t, locale } = useTranslation()
+  const resolvedTitle = title ?? t('seo.defaultTitle')
+  const resolvedDescription = description ?? t('seo.defaultDescription')
+  const canonical = localizedUrl(locale, path)
+
   return (
-    <Helmet>
-      {/* Standard metadata tags */}
-      <title>{title}</title>
-      <meta name='description' content={description} />
-      {/* Facebook tags */}
-      <meta property='og:type' content={type} />
-      <meta property='og:title' content={title} />
-      <meta property='og:description' content={description} />
-      {/* Twitter tags */}
-      <meta name='twitter:creator' content={name} />
-      <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:title' content={title} />
-      <meta name='twitter:description' content={description} />
-    </Helmet>
-  );
+    <Head>
+      <html lang={locale} />
+      <title>{resolvedTitle}</title>
+      <meta name="description" content={resolvedDescription} />
+
+      <link rel="canonical" href={canonical} />
+      {locales.map((l) => (
+        <link key={l} rel="alternate" hrefLang={l} href={localizedUrl(l, path)} />
+      ))}
+      <link rel="alternate" hrefLang="x-default" href={localizedUrl(defaultLocale, path)} />
+
+      {/* Open Graph */}
+      <meta property="og:type" content={type} />
+      <meta property="og:title" content={resolvedTitle} />
+      <meta property="og:description" content={resolvedDescription} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:locale" content={ogLocaleMap[locale]} />
+      {locales
+        .filter((l) => l !== locale)
+        .map((l) => (
+          <meta key={l} property="og:locale:alternate" content={ogLocaleMap[l]} />
+        ))}
+
+      {/* Twitter */}
+      <meta name="twitter:creator" content={name} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={resolvedTitle} />
+      <meta name="twitter:description" content={resolvedDescription} />
+    </Head>
+  )
 }

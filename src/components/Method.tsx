@@ -1,20 +1,21 @@
 import { motion } from 'framer-motion'
 import styles from '../styles/Method.module.css'
-import { methodSteps } from '../data/method'
+import { getMethodSteps } from '../data/method'
+import { useTranslation } from '../i18n/I18nProvider'
 
 const pipeline = ['spec', 'implement', 'verify', 'ship']
 
 function Method() {
+  const { t, locale } = useTranslation()
+  const methodSteps = getMethodSteps(locale)
+
   return (
     <section id="method" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.eyebrow}>02 — Method</span>
-          <h2 className={styles.title}>AI-Augmented Delivery</h2>
-          <p className={styles.intro}>
-            AI is the reason a one-person project can carry the scope of a team&rsquo;s. It is not
-            the reason the code is correct — that is still process. This is how I combine the two.
-          </p>
+          <span className={styles.eyebrow}>{t('method.eyebrow')}</span>
+          <h2 className={styles.title}>{t('method.title')}</h2>
+          <p className={styles.intro}>{t('method.intro')}</p>
 
           <div className={styles.pipeline}>
             <span className={styles.prompt}>$</span>
@@ -30,7 +31,7 @@ function Method() {
         <div className={styles.grid}>
           {methodSteps.map((step, i) => (
             <motion.article
-              key={step.index}
+              key={step.id}
               className={styles.card}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}

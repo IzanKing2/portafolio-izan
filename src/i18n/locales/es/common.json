@@ -1,0 +1,64 @@
+{
+  "nav.work": "Proyectos",
+  "nav.method": "Método",
+  "nav.tech": "Tecnología",
+  "nav.experience": "Experiencia",
+  "nav.about": "Sobre mí",
+  "nav.cta": "Hablemos",
+  "nav.contact": "Contacto",
+  "nav.toggleTheme": "Cambiar tema",
+  "nav.openMenu": "Abrir menú",
+  "nav.closeMenu": "Cerrar menú",
+  "nav.switchLanguage": "Switch to English",
+
+  "hero.badge": "Disponible para nuevas oportunidades",
+  "hero.headline": "Desarrollo full-stack, de la interfaz a la infraestructura.",
+  "hero.sublinePre": "Diseño y entrego productos web completos: interfaz, API, base de datos y despliegue. Además, trabajo con la IA como una herramienta de ingeniería, no como un atajo:",
+  "hero.sublineStrong": "desarrollo guiado por especificación",
+  "hero.sublinePost": "me permite entregar en stacks que nunca estudié formalmente, con el mismo nivel de exigencia que en los que sí.",
+  "hero.ctaProjects": "Ver proyectos",
+  "hero.ctaDownloadCv": "Descargar CV",
+
+  "footer.built": "Construido con React + Vite + TypeScript",
+
+  "projects.eyebrow": "01 — Portafolio",
+  "projects.title": "Proyectos destacados",
+  "projects.filterAll": "Todos",
+  "projects.live": "En producción",
+  "projects.liveDemo": "Ver demo",
+  "projects.viewCode": "Ver código",
+
+  "method.eyebrow": "02 — Método",
+  "method.title": "Entrega asistida por IA",
+  "method.intro": "La IA es la razón por la que un proyecto de una sola persona puede tener el alcance del de un equipo. No es la razón por la que el código es correcto: eso sigue siendo cuestión de proceso. Así combino ambas cosas.",
+
+  "tech.eyebrow": "03 — Stack",
+  "tech.title": "Caja de herramientas técnica",
+
+  "experience.eyebrow": "04 — Trayectoria",
+  "experience.title": "Experiencia",
+
+  "about.eyebrow": "05 — Perfil",
+  "about.title": "Sobre mí",
+  "about.terminalTitle": "~/izan — whoami",
+  "about.terminalFooter": "izan --role \"full-stack developer\"",
+  "about.p1": "Soy Desarrollador Web Full Stack, graduado en Desarrollo de Aplicaciones Web (DAW) y con más de un año de experiencia práctica en Servibyte S.L. Construyo interfaces que no solo funcionan, sino que se sienten bien, respaldadas por APIs e infraestructura sólidas.",
+  "about.p2": "Lo que cambió mi rango de acción es cómo trabajo: primero escribo la especificación, luego uso la IA para avanzar rápido dentro de ella, y verifico todo antes de publicarlo. Así logré llevar un producto a producción con Next.js y Supabase, un stack que nunca estudié en clase, sin bajar el nivel de calidad.",
+  "about.p3": "Trabajo con criterio propio, aprendo rápido y doy lo mejor de mí en un equipo que revisa el trabajo de los demás.",
+  "about.value1": "Proactivo",
+  "about.value2": "Trabajo en equipo",
+  "about.value3": "Adaptable",
+  "about.value4": "Atención al detalle",
+  "about.value5": "UI/UX",
+
+  "contact.eyebrow": "06 — Contacto",
+  "contact.headlineLine1": "Construyamos",
+  "contact.headlineLine2": "algo útil.",
+  "contact.sendMessage": "Enviar mensaje",
+  "contact.githubLabel": "Perfil de GitHub",
+  "contact.linkedinLabel": "Perfil de LinkedIn",
+  "contact.emailLabel": "Enviar correo",
+
+  "seo.defaultTitle": "Izan Carlo Celis Afonso | Desarrollador Web Full Stack",
+  "seo.defaultDescription": "Portafolio de Izan Carlo Celis Afonso, Desarrollador Web Full Stack. Proyectos, experiencia y tecnologías."
+}

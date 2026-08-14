@@ -1,20 +1,24 @@
 import { motion } from 'framer-motion'
 import styles from '../styles/Experiencia.module.css'
-import { experiences } from '../data/experience'
+import { getExperiences } from '../data/experience'
+import { useTranslation } from '../i18n/I18nProvider'
 
 function Experiencia() {
+  const { t, locale } = useTranslation()
+  const experiences = getExperiences(locale)
+
   return (
     <section id="experience" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.eyebrow}>04 — Career</span>
-          <h2 className={styles.title}>Experience</h2>
+          <span className={styles.eyebrow}>{t('experience.eyebrow')}</span>
+          <h2 className={styles.title}>{t('experience.title')}</h2>
         </div>
 
         <div className={styles.timeline}>
           {experiences.map((exp, index) => (
             <motion.div
-              key={exp.periodo}
+              key={exp.id}
               className={styles.item}
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}

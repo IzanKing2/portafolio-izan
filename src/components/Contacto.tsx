@@ -3,18 +3,21 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { FiArrowUpRight } from 'react-icons/fi'
 import styles from '../styles/Contacto.module.css'
-
-const socials = [
-  { href: 'https://github.com/IzanKing2', label: 'GitHub Profile', Icon: FaGithub },
-  {
-    href: 'https://www.linkedin.com/in/izan-celis-afonso/',
-    label: 'LinkedIn Profile',
-    Icon: FaLinkedin,
-  },
-  { href: 'mailto:izanwork2@gmail.com', label: 'Send Email', Icon: MdEmail },
-]
+import { useTranslation } from '../i18n/I18nProvider'
 
 function Contacto() {
+  const { t } = useTranslation()
+
+  const socials = [
+    { href: 'https://github.com/IzanKing2', label: t('contact.githubLabel'), Icon: FaGithub },
+    {
+      href: 'https://www.linkedin.com/in/izan-celis-afonso/',
+      label: t('contact.linkedinLabel'),
+      Icon: FaLinkedin,
+    },
+    { href: 'mailto:izanwork2@gmail.com', label: t('contact.emailLabel'), Icon: MdEmail },
+  ]
+
   return (
     <section id="contact" className={styles.section}>
       <motion.div
@@ -25,7 +28,7 @@ function Contacto() {
         transition={{ duration: 0.6 }}
       >
         <div className={styles.top}>
-          <span className={styles.eyebrow}>06 — Contact</span>
+          <span className={styles.eyebrow}>{t('contact.eyebrow')}</span>
           <div className={styles.socials}>
             {socials.map(({ href, label, Icon }) => (
               <a
@@ -43,9 +46,9 @@ function Contacto() {
         </div>
 
         <h2 className={styles.headline}>
-          Let&rsquo;s build
+          {t('contact.headlineLine1')}
           <br />
-          something useful.
+          {t('contact.headlineLine2')}
         </h2>
 
         <div className={styles.bottom}>
@@ -59,7 +62,7 @@ function Contacto() {
             href="mailto:izanwork2@gmail.com?subject=Let%27s%20work%20together"
             className={styles.send}
           >
-            Send Message <FiArrowUpRight />
+            {t('contact.sendMessage')} <FiArrowUpRight />
           </a>
         </div>
       </motion.div>

@@ -1,0 +1,64 @@
+{
+  "nav.work": "Work",
+  "nav.method": "Method",
+  "nav.tech": "Tech",
+  "nav.experience": "Experience",
+  "nav.about": "About",
+  "nav.cta": "Let's talk",
+  "nav.contact": "Contact",
+  "nav.toggleTheme": "Toggle theme",
+  "nav.openMenu": "Open menu",
+  "nav.closeMenu": "Close menu",
+  "nav.switchLanguage": "Switch to Spanish",
+
+  "hero.badge": "Available for opportunities",
+  "hero.headline": "Full-stack development from UI to infrastructure.",
+  "hero.sublinePre": "I build and ship complete web products — interface, API, database and deployment. I also work with AI as an engineering instrument rather than a shortcut:",
+  "hero.sublineStrong": "spec-driven development",
+  "hero.sublinePost": "lets me deliver in stacks I was never formally taught, at the same standard as the ones I was.",
+  "hero.ctaProjects": "View Projects",
+  "hero.ctaDownloadCv": "Download CV",
+
+  "footer.built": "Built with React + Vite + TypeScript",
+
+  "projects.eyebrow": "01 — Portfolio",
+  "projects.title": "Selected Work",
+  "projects.filterAll": "All",
+  "projects.live": "Live",
+  "projects.liveDemo": "Live Demo",
+  "projects.viewCode": "View Code",
+
+  "method.eyebrow": "02 — Method",
+  "method.title": "AI-Augmented Delivery",
+  "method.intro": "AI is the reason a one-person project can carry the scope of a team's. It is not the reason the code is correct — that is still process. This is how I combine the two.",
+
+  "tech.eyebrow": "03 — Stack",
+  "tech.title": "Technical Toolkit",
+
+  "experience.eyebrow": "04 — Career",
+  "experience.title": "Experience",
+
+  "about.eyebrow": "05 — Profile",
+  "about.title": "About",
+  "about.terminalTitle": "~/izan — whoami",
+  "about.terminalFooter": "izan --role \"full-stack developer\"",
+  "about.p1": "I'm a Full Stack Web Developer with a degree in Web Application Development (DAW) and over a year of hands-on experience at Servibyte S.L. I build interfaces that don't just work but feel right, and back them with APIs and infrastructure that hold up.",
+  "about.p2": "What changed my range is how I work: I write the specification first, then use AI to move fast inside it, and verify everything before it ships. That is what let me take a product live on Next.js and Supabase — a stack I was never taught in class — without lowering the bar on quality.",
+  "about.p3": "I work with independent judgment, learn quickly, and I'm at my best on a team that reviews each other's work.",
+  "about.value1": "Proactive",
+  "about.value2": "Team Player",
+  "about.value3": "Adaptable",
+  "about.value4": "Detail-Oriented",
+  "about.value5": "UI/UX",
+
+  "contact.eyebrow": "06 — Contact",
+  "contact.headlineLine1": "Let's build",
+  "contact.headlineLine2": "something useful.",
+  "contact.sendMessage": "Send Message",
+  "contact.githubLabel": "GitHub Profile",
+  "contact.linkedinLabel": "LinkedIn Profile",
+  "contact.emailLabel": "Send Email",
+
+  "seo.defaultTitle": "Izan Carlo Celis Afonso | Full-Stack Developer",
+  "seo.defaultDescription": "Portfolio of Izan Carlo Celis Afonso, Full-Stack Web Developer. Projects, experience and technologies."
+}
