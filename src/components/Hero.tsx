@@ -135,7 +135,7 @@ function Hero() {
               {t('hero.ctaProjects')} <FiArrowRight />
             </a>
             <a
-              href="/Izan_CV.pdf"
+              href="/CV_Izan_Celis_2026.pdf"
               className={`${styles.btn} ${styles.btnGhost}`}
               download="Izan_Carlo_Celis_Afonso_CV.pdf"
             >
