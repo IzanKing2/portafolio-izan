@@ -62,6 +62,7 @@ function Projects() {
                       addressBar={project.addressBar}
                     />
                   )}
+                  {index === 0 && <span className={styles.flagshipTag}>{t('projects.flagship')}</span>}
                   {project.demo && <span className={styles.liveTag}>{t('projects.live')}</span>}
                 </div>
 

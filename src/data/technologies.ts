@@ -31,7 +31,7 @@ export interface TechGroup extends TechGroupBase, TechGroupTranslations {
 
 export const statsBase: Record<StatId, StatBase> = {
   technologies: { numero: 16, sufijo: '+' },
-  projects: { numero: 4, sufijo: '' },
+  projects: { numero: 5, sufijo: '' },
   experience: { numero: 1, sufijo: '+' },
 };
 

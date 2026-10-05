@@ -60,6 +60,34 @@ function ProjectPreview({ variant, addressBar }: Props) {
           </div>
         )}
 
+        {variant === 'mobile' && (
+          <div className={styles.phoneWrap}>
+            <div className={styles.phone}>
+              <div className={styles.phoneNotch} />
+              <div className={styles.phoneHeader}>
+                <div className={styles.pairAvatars}>
+                  <span className={styles.avatar} />
+                  <span className={styles.pairLink} />
+                  <span className={`${styles.avatar} ${styles.avatarAlt}`} />
+                </div>
+                <span className={styles.pointsBadge}>128 pts</span>
+              </div>
+              <div className={styles.intensityTrack}>
+                <span className={styles.intensityFill} />
+              </div>
+              <div className={styles.challengeCard}>
+                <span className={styles.tileLine} />
+                <span className={`${styles.tileLine} ${styles.tileLineShort}`} />
+              </div>
+              <div className={styles.phoneTabs}>
+                {Array.from({ length: 3 }).map((_, i) => (
+                  <span key={i} className={styles.phoneTab} />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         {variant === 'api' && (
           <pre className={styles.code}>
             <span className={styles.codeLine}>

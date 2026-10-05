@@ -87,10 +87,38 @@
   box-shadow: var(--shadow-card), 0 0 28px rgba(245, 196, 0, 0.1);
 }
 
-/* First card spans the row and lays out side by side. */
+/* First card spans the row and lays out side by side, with an accent
+   glow ring to mark it as the flagship project. */
 .featured {
   grid-column: 1 / -1;
   flex-direction: row;
+  border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+  box-shadow: var(--shadow-card), 0 0 0 1px color-mix(in srgb, var(--color-accent) 18%, transparent),
+    0 0 48px rgba(245, 196, 0, 0.08);
+}
+
+.featured:hover {
+  box-shadow: var(--shadow-card), 0 0 0 1px color-mix(in srgb, var(--color-accent) 30%, transparent),
+    0 0 56px rgba(245, 196, 0, 0.16);
+}
+
+.flagshipTag {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: var(--color-surface);
+  color: var(--color-accent-text);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 50%, var(--color-border));
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.55rem;
+  border-radius: 4px;
 }
 
 .preview {
@@ -112,7 +140,8 @@
 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: #0a0609;
   transition: transform 0.5s ease;
 }
 

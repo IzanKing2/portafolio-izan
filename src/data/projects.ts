@@ -1,9 +1,10 @@
 import type { Locale } from '../i18n/config';
 import { mergeLocalized } from '../i18n/utils';
+import betweengamePreview from '../assets/betweengame-preview.png';
 
-export type PreviewVariant = 'grid' | 'list' | 'api';
+export type PreviewVariant = 'grid' | 'list' | 'api' | 'mobile';
 
-export type ProjectId = 'saborsemanal' | 'geekzone' | 'hybrid-furniture' | 'notes-api';
+export type ProjectId = 'betweengame' | 'saborsemanal' | 'geekzone' | 'hybrid-furniture' | 'notes-api';
 
 interface ProjectBase {
   stack: string[];
@@ -28,6 +29,14 @@ export interface Project extends ProjectBase, ProjectTranslations {
 }
 
 export const projectsBase: Record<ProjectId, ProjectBase> = {
+  betweengame: {
+    stack: ['React', 'Next.js', 'Supabase', 'TailwindCSS', 'PWA'],
+    demo: 'https://betweengame.com',
+    destacado: true,
+    imagen: betweengamePreview,
+    preview: 'mobile',
+    addressBar: 'betweengame.com',
+  },
   saborsemanal: {
     stack: ['React', 'Next.js', 'Supabase', 'TailwindCSS'],
     demo: 'https://saborsemanal.vercel.app/',
@@ -60,6 +69,12 @@ export const projectsBase: Record<ProjectId, ProjectBase> = {
 
 export const projectsI18n: Record<Locale, Record<ProjectId, ProjectTranslations>> = {
   en: {
+    betweengame: {
+      titulo: 'Between',
+      subtitulo: 'Private game for couples — live product',
+      descripcion:
+        'A full product built and shipped solo in about three weeks: real paying-ready users, a private consent-matching system between partners, daily missions and streaks, push notifications, age-gating and published privacy/terms policies — the scope a small team would normally need, end to end from spec to production.',
+    },
     saborsemanal: {
       titulo: 'SaborSemanal',
       subtitulo: 'Weekly meal planner',
@@ -86,6 +101,12 @@ export const projectsI18n: Record<Locale, Record<ProjectId, ProjectTranslations>
     },
   },
   es: {
+    betweengame: {
+      titulo: 'Between',
+      subtitulo: 'Juego privado para parejas — producto en producción',
+      descripcion:
+        'Producto completo construido y desplegado en solitario en unas tres semanas: usuarios reales, un sistema privado de encaje por consentimiento entre ambos miembros de la pareja, misiones diarias y rachas, notificaciones push, control de edad y políticas de privacidad y términos publicadas — el alcance que normalmente necesitaría un pequeño equipo, de principio a fin desde la especificación hasta producción.',
+    },
     saborsemanal: {
       titulo: 'SaborSemanal',
       subtitulo: 'Planificador semanal de comidas',

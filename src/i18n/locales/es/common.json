@@ -25,6 +25,7 @@
   "projects.title": "Proyectos destacados",
   "projects.filterAll": "Todos",
   "projects.live": "En producción",
+  "projects.flagship": "Proyecto insignia",
   "projects.liveDemo": "Ver demo",
   "projects.viewCode": "Ver código",
 
@@ -42,8 +43,8 @@
   "about.title": "Sobre mí",
   "about.terminalTitle": "~/izan — whoami",
   "about.terminalFooter": "izan --role \"full-stack developer\"",
-  "about.p1": "Soy Desarrollador Web Full Stack, graduado en Desarrollo de Aplicaciones Web (DAW) y con más de un año de experiencia práctica en Servibyte S.L. Construyo interfaces que no solo funcionan, sino que se sienten bien, respaldadas por APIs e infraestructura sólidas.",
-  "about.p2": "Lo que cambió mi rango de acción es cómo trabajo: primero escribo la especificación, luego uso la IA para avanzar rápido dentro de ella, y verifico todo antes de publicarlo. Así logré llevar un producto a producción con Next.js y Supabase, un stack que nunca estudié en clase, sin bajar el nivel de calidad.",
+  "about.p1": "Soy Desarrollador Web Full Stack, graduado en Desarrollo de Aplicaciones Web (DAW), con más de un año de experiencia práctica en Servibyte S.L. y autor en solitario de Between, un producto en producción con usuarios reales.",
+  "about.p2": "Uso la IA como herramienta de ingeniería, no como atajo: escribo primero la especificación, dirijo la implementación y verifico cada pieza antes de publicarla. Así llevé Between —mecánicas de juego, seguridad y políticas de privacidad y términos incluidas— de la idea a producción en unas tres semanas, en solitario y con apenas inversión: el alcance que normalmente exigiría un equipo de 5-6 desarrolladores.",
   "about.p3": "Trabajo con criterio propio, aprendo rápido y doy lo mejor de mí en un equipo que revisa el trabajo de los demás.",
   "about.value1": "Proactivo",
   "about.value2": "Trabajo en equipo",
