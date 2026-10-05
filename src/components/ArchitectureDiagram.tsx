@@ -2,10 +2,11 @@ import { motion } from 'framer-motion'
 import styles from '../styles/ArchitectureDiagram.module.css'
 
 const layers = [
-  { name: 'Frontend', meta: 'REACT · NEXT.JS · ANGULAR' },
-  { name: 'API', meta: 'REST · JWT AUTH' },
-  { name: 'Backend', meta: 'LARAVEL · SPRING BOOT' },
-  { name: 'Database', meta: 'POSTGRES · MYSQL' },
+  { name: 'AI Engineering', meta: 'CLAUDE CODE · SPEC-DRIVEN', accent: true },
+  { name: 'Frontend', meta: 'REACT · NEXT.JS · ANGULAR', accent: false },
+  { name: 'API', meta: 'REST · JWT AUTH', accent: false },
+  { name: 'Backend', meta: 'LARAVEL · SPRING BOOT', accent: false },
+  { name: 'Database', meta: 'POSTGRES · MYSQL', accent: false },
 ]
 
 /**
@@ -15,7 +16,7 @@ const layers = [
 function ArchitectureDiagram() {
   return (
     <div className={styles.frame} aria-hidden="true">
-      <span className={styles.frameLabel}>ARCHITECTURE</span>
+      <span className={styles.frameLabel}>AI-AUGMENTED ARCHITECTURE</span>
 
       <div className={styles.stack}>
         {layers.map((layer, i) => (
@@ -26,8 +27,12 @@ function ArchitectureDiagram() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + i * 0.15, duration: 0.5, ease: 'easeOut' }}
             >
-              <div className={styles.node}>{layer.name}</div>
-              <span className={styles.meta}>{layer.meta}</span>
+              <div className={`${styles.node} ${layer.accent ? styles.nodeAccent : ''}`}>
+                {layer.name}
+              </div>
+              <span className={`${styles.meta} ${layer.accent ? styles.metaAccent : ''}`}>
+                {layer.meta}
+              </span>
             </motion.div>
 
             {i < layers.length - 1 && (

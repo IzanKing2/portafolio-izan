@@ -1,22 +1,11 @@
 import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { MdEmail } from 'react-icons/md'
 import { FiArrowUpRight } from 'react-icons/fi'
 import styles from '../styles/Contacto.module.css'
 import { useTranslation } from '../i18n/I18nProvider'
+import { socials } from '../data/socials'
 
 function Contacto() {
   const { t } = useTranslation()
-
-  const socials = [
-    { href: 'https://github.com/IzanKing2', label: t('contact.githubLabel'), Icon: FaGithub },
-    {
-      href: 'https://www.linkedin.com/in/izan-celis-afonso/',
-      label: t('contact.linkedinLabel'),
-      Icon: FaLinkedin,
-    },
-    { href: 'mailto:izanwork2@gmail.com', label: t('contact.emailLabel'), Icon: MdEmail },
-  ]
 
   return (
     <section id="contact" className={styles.section}>
@@ -30,14 +19,14 @@ function Contacto() {
         <div className={styles.top}>
           <span className={styles.eyebrow}>{t('contact.eyebrow')}</span>
           <div className={styles.socials}>
-            {socials.map(({ href, label, Icon }) => (
+            {socials.map(({ href, labelKey, Icon }) => (
               <a
-                key={label}
+                key={labelKey}
                 href={href}
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className={styles.socialLink}
-                aria-label={label}
+                aria-label={t(labelKey)}
               >
                 <Icon />
               </a>

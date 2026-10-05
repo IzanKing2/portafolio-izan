@@ -18,6 +18,11 @@ function Method() {
           <p className={styles.intro}>{t('method.intro')}</p>
 
           <div className={styles.pipeline}>
+            <span className={styles.pipelineDots} aria-hidden="true">
+              <span className={`${styles.pipelineDot} ${styles.dotRed}`} />
+              <span className={`${styles.pipelineDot} ${styles.dotAmber}`} />
+              <span className={`${styles.pipelineDot} ${styles.dotGreen}`} />
+            </span>
             <span className={styles.prompt}>$</span>
             {pipeline.map((step, i) => (
               <span key={step} className={styles.pipelineStep}>
@@ -38,6 +43,9 @@ function Method() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.5, delay: i * 0.12 }}
             >
+              <span className={styles.ghostIndex} aria-hidden="true">
+                {step.index}
+              </span>
               <span className={styles.index}>{step.index}</span>
               <h3 className={styles.cardTitle}>{step.titulo}</h3>
               <p className={styles.cardText}>{step.descripcion}</p>

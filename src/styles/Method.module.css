@@ -55,6 +55,29 @@
   font-size: 0.78rem;
 }
 
+.pipelineDots {
+  display: inline-flex;
+  gap: 0.3rem;
+  margin-right: 0.3rem;
+}
+
+.pipelineDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  opacity: 0.65;
+}
+
+.dotRed {
+  background-color: #ff5f57;
+}
+.dotAmber {
+  background-color: #febc2e;
+}
+.dotGreen {
+  background-color: #28c840;
+}
+
 .prompt {
   color: var(--color-accent-text);
   font-weight: 700;
@@ -121,6 +144,19 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   color: var(--color-accent-text);
+}
+
+.ghostIndex {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-family: var(--font-mono);
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-accent-soft);
+  pointer-events: none;
+  user-select: none;
 }
 
 .cardTitle {

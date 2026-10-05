@@ -42,7 +42,7 @@ describe('content', () => {
   it('lists the live project demo', () => {
     renderWithProviders(<Proyectos />, { locale: 'en' });
     const demo = screen.getAllByText('Live Demo')[0].closest('a');
-    expect(demo).toHaveAttribute('href', 'https://saborsemanal.vercel.app/');
+    expect(demo).toHaveAttribute('href', 'https://betweengame.com');
   });
 
   it('renders translated content in Spanish', () => {

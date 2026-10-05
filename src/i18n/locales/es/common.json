@@ -12,7 +12,7 @@
   "nav.switchLanguage": "Switch to English",
 
   "hero.badge": "Disponible para nuevas oportunidades",
-  "hero.headline": "Desarrollo full-stack, de la interfaz a la infraestructura.",
+  "hero.headline": "Desarrollo full-stack asistido por IA, de la interfaz a la infraestructura.",
   "hero.sublinePre": "Diseño y entrego productos web completos: interfaz, API, base de datos y despliegue. Además, trabajo con la IA como una herramienta de ingeniería, no como un atajo:",
   "hero.sublineStrong": "desarrollo guiado por especificación",
   "hero.sublinePost": "me permite entregar en stacks que nunca estudié formalmente, con el mismo nivel de exigencia que en los que sí.",
@@ -20,6 +20,7 @@
   "hero.ctaDownloadCv": "Descargar CV",
 
   "footer.built": "Construido con React + Vite + TypeScript",
+  "footer.backToTop": "Volver arriba",
 
   "projects.eyebrow": "01 — Portafolio",
   "projects.title": "Proyectos destacados",

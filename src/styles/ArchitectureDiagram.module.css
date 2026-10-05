@@ -49,6 +49,17 @@
   box-shadow: var(--shadow-card);
 }
 
+/* The AI layer drives everything below it, so it carries the accent. */
+.nodeAccent {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card), 0 0 20px rgba(245, 196, 0, 0.18);
+}
+
+.metaAccent {
+  border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-border));
+  color: var(--color-accent-text);
+}
+
 .meta {
   font-family: var(--font-mono);
   font-size: 0.62rem;

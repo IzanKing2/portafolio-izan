@@ -12,7 +12,7 @@
   "nav.switchLanguage": "Switch to Spanish",
 
   "hero.badge": "Available for opportunities",
-  "hero.headline": "Full-stack development from UI to infrastructure.",
+  "hero.headline": "AI-augmented full-stack development, from UI to infrastructure.",
   "hero.sublinePre": "I build and ship complete web products — interface, API, database and deployment. I also work with AI as an engineering instrument rather than a shortcut:",
   "hero.sublineStrong": "spec-driven development",
   "hero.sublinePost": "lets me deliver in stacks I was never formally taught, at the same standard as the ones I was.",
@@ -20,6 +20,7 @@
   "hero.ctaDownloadCv": "Download CV",
 
   "footer.built": "Built with React + Vite + TypeScript",
+  "footer.backToTop": "Back to top",
 
   "projects.eyebrow": "01 — Portfolio",
   "projects.title": "Selected Work",

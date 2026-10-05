@@ -80,6 +80,9 @@
 }
 
 .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   background-color: var(--color-surface-2);
   color: var(--color-text);
   border: 1px solid var(--color-border);
@@ -88,6 +91,11 @@
   font-size: 0.82rem;
   font-weight: 500;
   transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.pillIcon {
+  font-size: 0.95em;
+  flex-shrink: 0;
 }
 
 .pill:hover {

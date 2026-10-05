@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import styles from '../styles/Tecnologias.module.css'
 import { getTechGroups } from '../data/technologies'
+import { techIcons } from '../data/techIcons'
 import { useTranslation } from '../i18n/I18nProvider'
 
 function Tecnologias() {
@@ -29,11 +30,15 @@ function Tecnologias() {
               >
                 <span className={styles.rowLabel}>{group.title}</span>
                 <div className={styles.pills}>
-                  {group.items.map((item) => (
-                    <span key={item} className={styles.pill}>
-                      {item}
-                    </span>
-                  ))}
+                  {group.items.map((item) => {
+                    const Icon = techIcons[item]
+                    return (
+                      <span key={item} className={styles.pill}>
+                        {Icon && <Icon className={styles.pillIcon} aria-hidden="true" />}
+                        {item}
+                      </span>
+                    )
+                  })}
                 </div>
               </motion.div>
             )
