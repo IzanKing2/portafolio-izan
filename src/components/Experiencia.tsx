@@ -25,7 +25,7 @@ function Experiencia() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.5, delay: index * 0.12 }}
             >
-              <span className={styles.period}>{exp.periodo}</span>
+              <span className={styles.period}>{exp.periodo.replace('Present', t('experience.present'))}</span>
 
               <div className={styles.rail}>
                 <span className={`${styles.dot} ${index === 0 ? styles.dotActive : ''}`} />

@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { motion } from 'framer-motion'
 import styles from '../styles/Method.module.css'
 import { getMethodSteps } from '../data/method'
@@ -17,18 +18,12 @@ function Method() {
           <h2 className={styles.title}>{t('method.title')}</h2>
           <p className={styles.intro}>{t('method.intro')}</p>
 
-          <div className={styles.pipeline}>
-            <span className={styles.pipelineDots} aria-hidden="true">
-              <span className={`${styles.pipelineDot} ${styles.dotRed}`} />
-              <span className={`${styles.pipelineDot} ${styles.dotAmber}`} />
-              <span className={`${styles.pipelineDot} ${styles.dotGreen}`} />
-            </span>
-            <span className={styles.prompt}>$</span>
+          <div className={styles.pipe} aria-hidden="true">
             {pipeline.map((step, i) => (
-              <span key={step} className={styles.pipelineStep}>
-                {step}
-                {i < pipeline.length - 1 && <span className={styles.arrow}>→</span>}
-              </span>
+              <Fragment key={step}>
+                <span className={styles.pipeNode}>{step}</span>
+                {i < pipeline.length - 1 && <span className={styles.pipeLine} />}
+              </Fragment>
             ))}
           </div>
         </div>
