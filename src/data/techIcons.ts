@@ -23,6 +23,8 @@ import {
   SiGithubactions,
   SiVercel,
   SiClaudecode,
+  SiVuedotjs,
+  SiVitest,
 } from 'react-icons/si';
 
 /**
@@ -55,4 +57,6 @@ export const techIcons: Record<string, IconType> = {
   'GitHub Actions': SiGithubactions,
   Vercel: SiVercel,
   'Claude Code': SiClaudecode,
+  Vue: SiVuedotjs,
+  Vitest: SiVitest,
 };

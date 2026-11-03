@@ -80,6 +80,13 @@
   font-weight: 600;
 }
 
+.facts {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
 .values {
   display: flex;
   flex-wrap: wrap;

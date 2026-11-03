@@ -37,6 +37,7 @@ function SobreMi() {
             <p>{highlightProduct(t('about.p1'), 'Between')}</p>
             <p>{t('about.p2')}</p>
             <p>{t('about.p3')}</p>
+            <p className={styles.facts}>{t('about.facts')}</p>
 
             <div className={styles.values}>
               {values.map((v) => (
