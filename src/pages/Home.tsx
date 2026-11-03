@@ -1,10 +1,11 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import CustomCursor from '../components/CustomCursor'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer'
 import SEO from '../components/SEO'
+import { useScrollProgress } from '../hooks/useScrollProgress'
 import { I18nProvider } from '../i18n/I18nProvider'
 import { isLocale, defaultLocale } from '../i18n/config'
 
@@ -18,6 +19,8 @@ const Contacto = lazy(() => import('../components/Contacto'))
 function Home() {
   const { lang } = useParams()
   const locale = isLocale(lang) ? lang : defaultLocale
+  const mainRef = useRef<HTMLElement | null>(null)
+  useScrollProgress(mainRef)
 
   return (
     <I18nProvider locale={locale}>
@@ -25,7 +28,7 @@ function Home() {
       <CustomCursor />
       <Navbar />
       <Hero />
-      <main>
+      <main ref={mainRef} className="thread">
         <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
           <Proyectos />
           <Method />

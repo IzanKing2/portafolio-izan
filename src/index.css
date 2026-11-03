@@ -186,3 +186,51 @@ body::after {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* "Neural thread": a vertical line down the left gutter that lights up as you
+   scroll, with a node on every section (decorative). */
+.thread {
+  position: relative;
+  --thread-x: max(0.6rem, calc((100vw - var(--max-width)) / 2 - 1.4rem));
+}
+
+.thread::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--thread-x);
+  width: 1px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent) calc(var(--thread-p, 0) * 100%),
+    var(--color-border-strong) calc(var(--thread-p, 0) * 100%)
+  );
+}
+
+.thread > section {
+  position: relative;
+}
+
+.thread > section::before {
+  content: '';
+  position: absolute;
+  top: 6.2rem;
+  left: calc(var(--thread-x) - 5px);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  background: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 0 0 5px var(--color-bg), 0 0 14px rgba(245, 196, 0, 0.35);
+}
+
+@media (max-width: 640px) {
+  .thread > section::before {
+    top: 4.2rem;
+  }
+}
