@@ -13,6 +13,7 @@ function Projects() {
   const { t, locale } = useTranslation()
   const [filter, setFilter] = useState('All')
   const projects = getProjects(locale)
+  const bento = filter === 'All'
 
   const filteredProjects = projects.filter(
     (project) => filter === 'All' || project.stack.includes(filter)
@@ -40,7 +41,7 @@ function Projects() {
           </div>
         </div>
 
-        <motion.div layout className={styles.grid}>
+        <motion.div layout className={`${styles.grid} ${bento ? styles.bento : ''}`}>
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
               <motion.article
@@ -53,6 +54,7 @@ function Projects() {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
               >
+                {!(bento && index > 0) && (
                 <div className={styles.preview}>
                   {project.imagen ? (
                     <img src={project.imagen} alt={project.titulo} className={styles.image} />
@@ -65,8 +67,15 @@ function Projects() {
                   {index === 0 && <span className={styles.flagshipTag}>{t('projects.flagship')}</span>}
                   {project.demo && <span className={styles.liveTag}>{t('projects.live')}</span>}
                 </div>
+                )}
 
                 <div className={styles.body}>
+                  {bento && index > 0 && (
+                    <div className={styles.bar}>
+                      <span className={project.demo ? styles.barDotLive : styles.barDot} />
+                      {project.addressBar}
+                    </div>
+                  )}
                   <div className={styles.titleRow}>
                     <h3 className={styles.cardTitle}>{project.titulo}</h3>
                     <span className={styles.cardSubtitle}>{project.subtitulo}</span>

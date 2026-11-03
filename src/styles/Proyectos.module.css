@@ -30,7 +30,6 @@
   font-size: clamp(1.9rem, 4vw, 2.6rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
   color: var(--color-text);
 }
 
@@ -299,4 +298,133 @@
   .header {
     align-items: flex-start;
   }
+}
+
+/* Bento layout (filter "All"): flagship takes 4 of 6 columns and two rows,
+   the next two projects stack beside it, the rest share a final row.
+   Cards other than the flagship drop the browser mock-up for a one-line
+   address bar so the grid reads as a dense, even mosaic. */
+.bento {
+  grid-template-columns: repeat(6, 1fr);
+  align-items: stretch;
+}
+
+.bento > .card {
+  grid-column: span 3;
+}
+
+.bento > .card:nth-child(1) {
+  grid-column: span 4;
+  grid-row: span 2;
+  flex-direction: column;
+}
+
+.bento > .card:nth-child(1) .preview {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  border-right: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bento > .card:nth-child(1) .image {
+  height: auto;
+}
+
+.bento > .card:nth-child(1) .body {
+  padding: 1.75rem 2rem 2rem;
+  justify-content: flex-start;
+}
+
+.bento > .card:nth-child(2),
+.bento > .card:nth-child(3) {
+  grid-column: span 2;
+}
+
+.bento > .card:nth-child(2) .description,
+.bento > .card:nth-child(3) .description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: none;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.barDot,
+.barDotLive {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-border-strong);
+}
+
+.barDotLive {
+  background-color: var(--color-success);
+}
+
+@media (max-width: 1100px) {
+  .bento > .card:nth-child(1) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .bento > .card:nth-child(2),
+  .bento > .card:nth-child(3) {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 900px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .bento > .card,
+  .bento > .card:nth-child(n) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Bento: subtitle under the title in accent, links as quiet underlined text */
+.bento .titleRow {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.bento .cardSubtitle {
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-accent-text);
+}
+
+.bento .link,
+.bento .linkPrimary {
+  padding: 0 0 1px;
+  border: none;
+  border-bottom: 1px solid var(--color-border-strong);
+  border-radius: 0;
+  background: none;
+  color: var(--color-text);
+  box-shadow: none;
+}
+
+.bento .link:hover,
+.bento .linkPrimary:hover {
+  border-bottom-color: var(--color-accent);
+  color: var(--color-accent-text);
+  transform: none;
+  box-shadow: none;
 }

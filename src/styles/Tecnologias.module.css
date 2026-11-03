@@ -25,22 +25,21 @@
   font-size: clamp(1.9rem, 4vw, 2.6rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
   color: var(--color-text);
 }
 
 .rows {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
 }
 
 .row {
   display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 1.5rem;
-  align-items: center;
-  padding: 1rem 1.35rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-content: start;
+  padding: 1.4rem;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -49,14 +48,14 @@
 
 .row:hover {
   border-color: var(--color-border-strong);
-  transform: translateX(4px);
+  transform: translateY(-3px);
 }
 
 /* The AI row is the point of the section, so it carries the accent. */
 .highlight {
   border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
   background: linear-gradient(
-    90deg,
+    135deg,
     var(--color-accent-soft) 0%,
     var(--color-surface) 55%
   );
@@ -67,10 +66,12 @@
 }
 
 .rowLabel {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-text);
-  letter-spacing: -0.01em;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
 .pills {
@@ -105,9 +106,8 @@
 }
 
 @media (max-width: 760px) {
-  .row {
+  .rows {
     grid-template-columns: 1fr;
-    gap: 0.85rem;
   }
 
   .row:hover {
@@ -119,4 +119,43 @@
   .section {
     padding: 4rem 1.25rem;
   }
+}
+
+/* Headline numbers */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.stat {
+  flex: 1 1 160px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.2rem;
+  border-left: 2px solid var(--color-accent);
+  background-color: color-mix(in srgb, var(--color-surface) 60%, transparent);
+}
+
+.statNumber {
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+}
+
+.statSuffix {
+  color: var(--color-accent-text);
+}
+
+.statLabel {
+  margin-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }

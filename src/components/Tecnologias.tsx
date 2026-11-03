@@ -3,6 +3,7 @@ import styles from '../styles/Tecnologias.module.css'
 import { getTechGroups } from '../data/technologies'
 import { techIcons } from '../data/techIcons'
 import { useTranslation } from '../i18n/I18nProvider'
+import StatsRow from './StatsRow'
 
 function Tecnologias() {
   const { t, locale } = useTranslation()
@@ -15,6 +16,8 @@ function Tecnologias() {
           <span className={styles.eyebrow}>{t('tech.eyebrow')}</span>
           <h2 className={styles.title}>{t('tech.title')}</h2>
         </div>
+
+        <StatsRow />
 
         <div className={styles.rows}>
           {groups.map((group, i) => {
