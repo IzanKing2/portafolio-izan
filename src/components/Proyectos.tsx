@@ -1,23 +1,45 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { FaGithub } from 'react-icons/fa'
-import { FiExternalLink } from 'react-icons/fi'
+import { FiArrowRight, FiExternalLink } from 'react-icons/fi'
 import ProjectPreview from './ProjectPreview'
 import styles from '../styles/Proyectos.module.css'
-import { getProjects } from '../data/projects'
+import { getProjects, matchesFilter, projectFilters } from '../data/projects'
 import { useTranslation } from '../i18n/I18nProvider'
 
-const categories = ['All', 'React', 'Laravel', 'Java']
+const ALL = 'all'
+
+/**
+ * Column span of each visible card. The flagship (first project) always leads:
+ * big when there are enough projects around it, otherwise just wider.
+ */
+function spanClass(index: number, count: number, flagshipVisible: boolean): string {
+  if (flagshipVisible) {
+    if (index === 0) return count >= 3 ? styles.spanHero : styles.spanHero1
+    if (index <= 2) return styles.spanSide
+  }
+  return styles.spanHalf
+}
 
 function Projects() {
   const { t, locale } = useTranslation()
-  const [filter, setFilter] = useState('All')
+  const reduceMotion = useReducedMotion()
+  const [active, setActive] = useState(ALL)
   const projects = getProjects(locale)
-  const bento = filter === 'All'
+  const flagshipId = projects[0].id
 
-  const filteredProjects = projects.filter(
-    (project) => filter === 'All' || project.stack.includes(filter)
-  )
+  const filters = [
+    { id: ALL, label: t('projects.filterAll'), count: projects.length },
+    ...projectFilters
+      .map((f) => ({ id: f.id, label: f.label, count: projects.filter((p) => matchesFilter(p, f)).length }))
+      .filter((f) => f.count > 0),
+  ]
+
+  const activeFilter = projectFilters.find((f) => f.id === active)
+  const visible = activeFilter ? projects.filter((p) => matchesFilter(p, activeFilter)) : projects
+  const flagshipVisible = visible[0]?.id === flagshipId
+  const resultText =
+    visible.length === 1 ? t('projects.resultOne') : `${visible.length} ${t('projects.resultMany')}`
 
   return (
     <section id="projects" className={styles.section}>
@@ -28,96 +50,118 @@ function Projects() {
             <h2 className={styles.title}>{t('projects.title')}</h2>
           </div>
 
-          <div className={styles.filters}>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                className={`${styles.filterBtn} ${filter === cat ? styles.activeFilter : ''}`}
-                onClick={() => setFilter(cat)}
-              >
-                {cat === 'All' ? t('projects.filterAll') : cat}
-              </button>
-            ))}
+          <div className={styles.filterBar}>
+            <div className={styles.filters} role="group" aria-label={t('projects.filterLabel')}>
+              {filters.map((f) => (
+                <button
+                  key={f.id}
+                  type="button"
+                  aria-pressed={active === f.id}
+                  className={`${styles.filterBtn} ${active === f.id ? styles.filterActive : ''}`}
+                  onClick={() => setActive(f.id)}
+                >
+                  {active === f.id && (
+                    <motion.span
+                      layoutId="project-filter-pill"
+                      className={styles.filterPill}
+                      transition={{ type: 'spring', stiffness: 520, damping: 40 }}
+                    />
+                  )}
+                  <span className={styles.filterLabel}>{f.label}</span>
+                  <span className={styles.filterCount}>{f.count}</span>
+                </button>
+              ))}
+            </div>
+            <p className={styles.resultCount} aria-live="polite">
+              {resultText}
+            </p>
           </div>
         </div>
 
-        <motion.div layout className={`${styles.grid} ${bento ? styles.bento : ''}`}>
+        <div className={styles.grid}>
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
-              <motion.article
-                layout
-                key={project.id}
-                className={`${styles.card} ${index === 0 ? styles.featured : ''}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-              >
-                {!(bento && index > 0) && (
-                <div className={styles.preview}>
-                  {project.imagen ? (
-                    <img src={project.imagen} alt={project.titulo} className={styles.image} />
-                  ) : (
-                    <ProjectPreview
-                      variant={project.preview}
-                      addressBar={project.addressBar}
-                    />
-                  )}
-                  {index === 0 && <span className={styles.flagshipTag}>{t('projects.flagship')}</span>}
-                  {project.demo && <span className={styles.liveTag}>{t('projects.live')}</span>}
-                </div>
-                )}
-
-                <div className={styles.body}>
-                  {bento && index > 0 && (
-                    <div className={styles.bar}>
-                      <span className={project.demo ? styles.barDotLive : styles.barDot} />
-                      {project.addressBar}
+            {visible.map((project, index) => {
+              const isFlagship = project.id === flagshipId
+              return (
+                <motion.article
+                  layout="position"
+                  key={project.id}
+                  className={`${styles.card} ${spanClass(index, visible.length, flagshipVisible)} ${
+                    isFlagship ? styles.flagship : ''
+                  }`}
+                  initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.97 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={
+                    reduceMotion
+                      ? { opacity: 0, transition: { duration: 0.1 } }
+                      : { opacity: 0, scale: 0.94, transition: { duration: 0.18 } }
+                  }
+                  whileHover={reduceMotion ? undefined : { y: -4, transition: { duration: 0.2, delay: 0 } }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{
+                    layout: { type: 'spring', stiffness: 420, damping: 38, mass: 0.9 },
+                    default: { duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: index * 0.06 },
+                  }}
+                >
+                  {isFlagship && (
+                    <div className={styles.preview}>
+                      {project.imagen ? (
+                        <img src={project.imagen} alt={project.titulo} className={styles.image} />
+                      ) : (
+                        <ProjectPreview variant={project.preview} addressBar={project.addressBar} />
+                      )}
+                      <span className={styles.flagshipTag}>{t('projects.flagship')}</span>
+                      {project.demo && <span className={styles.liveTag}>{t('projects.live')}</span>}
                     </div>
                   )}
-                  <div className={styles.titleRow}>
-                    <h3 className={styles.cardTitle}>{project.titulo}</h3>
-                    <span className={styles.cardSubtitle}>{project.subtitulo}</span>
-                  </div>
 
-                  <p className={styles.description}>{project.descripcion}</p>
-
-                  <div className={styles.stack}>
-                    {project.stack.map((tech) => (
-                      <span key={tech} className={styles.pill}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className={styles.links}>
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`${styles.link} ${styles.linkPrimary}`}
-                      >
-                        <FiExternalLink /> {t('projects.liveDemo')}
-                      </a>
+                  <div className={styles.body}>
+                    {!isFlagship && (
+                      <div className={styles.bar}>
+                        <span className={project.demo ? styles.barDotLive : styles.barDot} />
+                        {project.addressBar}
+                      </div>
                     )}
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.link}
-                      >
-                        <FaGithub /> {t('projects.viewCode')}
+                    <div className={styles.titleRow}>
+                      <h3 className={styles.cardTitle}>{project.titulo}</h3>
+                      <span className={styles.cardSubtitle}>{project.subtitulo}</span>
+                    </div>
+
+                    <p className={styles.description}>{project.descripcion}</p>
+
+                    <div className={styles.stack}>
+                      {project.stack.map((tech) => (
+                        <span key={tech} className={styles.pill}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className={styles.links}>
+                      {project.demo && (
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                          <FiExternalLink /> {t('projects.liveDemo')}
+                        </a>
+                      )}
+                      <a href={`/${locale}/projects#${project.id}`} className={styles.link}>
+                        {t('projects.viewDetails')} <FiArrowRight />
                       </a>
-                    )}
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                          <FaGithub /> {t('projects.viewCode')}
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.article>
-            ))}
+                </motion.article>
+              )
+            })}
           </AnimatePresence>
-        </motion.div>
+        </div>
+
+        <a href={`/${locale}/projects`} className={styles.allDetails}>
+          {t('projects.allDetails')} <FiArrowRight />
+        </a>
       </div>
     </section>
   )
