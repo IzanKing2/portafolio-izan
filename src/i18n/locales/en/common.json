@@ -17,6 +17,7 @@
   "hero.sublineStrong": "written spec before any code",
   "hero.sublinePost": "and verify every change with tests, review and browser checks. AI speeds up the implementation; the judgment is mine.",
   "hero.ctaProjects": "View Projects",
+  "hero.ctaViewCv": "View CV",
   "hero.ctaDownloadCv": "Download CV",
   "hero.proof1": "unit tests in Between",
   "hero.proof2": "SQL migrations in Between",

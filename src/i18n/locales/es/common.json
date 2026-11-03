@@ -17,6 +17,7 @@
   "hero.sublineStrong": "especificación escrita antes del código",
   "hero.sublinePost": "y verificación de cada cambio con tests, revisión y pruebas en navegador. La IA acelera la implementación; el criterio es mío.",
   "hero.ctaProjects": "Ver proyectos",
+  "hero.ctaViewCv": "Ver CV",
   "hero.ctaDownloadCv": "Descargar CV",
   "hero.proof1": "tests unitarios en Between",
   "hero.proof2": "migraciones SQL en Between",
