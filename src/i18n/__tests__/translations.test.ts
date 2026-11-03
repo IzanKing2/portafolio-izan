@@ -4,6 +4,7 @@ import en from '../locales/en/common.json';
 import { projectsBase, projectsI18n } from '../../data/projects';
 import { experienceBase, experienceI18n } from '../../data/experience';
 import { methodStepsBase, methodStepsI18n } from '../../data/method';
+import { projectDetailsBase, projectDetailsI18n } from '../../data/projectDetails';
 import { statsBase, statsI18n, techGroupsBase, techGroupsI18n } from '../../data/technologies';
 
 describe('UI translation parity (common.json)', () => {
@@ -44,5 +45,17 @@ describe('data translation parity', () => {
 
   it('tech groups: base and every locale share the same ids', () => {
     expectSameIds(techGroupsBase, techGroupsI18n, 'techGroups');
+  });
+
+  it('project details: base and every locale share the same ids', () => {
+    expectSameIds(projectDetailsBase, projectDetailsI18n, 'projectDetails');
+  });
+
+  it('project details: every locale has the same number of decisions and metrics per project', () => {
+    for (const id of Object.keys(projectDetailsBase) as (keyof typeof projectDetailsBase)[]) {
+      expect(projectDetailsI18n.en[id].decisiones.length, id + ' decisions').toBe(projectDetailsI18n.es[id].decisiones.length);
+      expect(projectDetailsI18n.en[id].metricas.length, id + ' metrics').toBe(projectDetailsI18n.es[id].metricas.length);
+      expect(projectDetailsI18n.en[id].calidad.length, id + ' quality').toBe(projectDetailsI18n.es[id].calidad.length);
+    }
   });
 });

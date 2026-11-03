@@ -5,7 +5,7 @@ const SITE_URL = process.env.VITE_SITE_URL ?? 'https://izancarlo.dev'
 const LOCALES = ['es', 'en']
 const DEFAULT_LOCALE = 'es'
 // Routes relative to a locale, e.g. '' for /:lang, '/projects' for /:lang/projects.
-const ROUTES = ['']
+const ROUTES = ['', '/projects']
 
 const distDir = path.resolve(process.cwd(), 'dist')
 
