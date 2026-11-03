@@ -5,6 +5,13 @@ import NeuralBrainCanvas from './NeuralBrainCanvas'
 import styles from '../styles/Hero.module.css'
 import { useTranslation } from '../i18n/I18nProvider'
 
+/** Headline figures, taken from the Between and GestiCAB write-ups. */
+const proof = [
+  { value: '800+', label: 'hero.proof1' },
+  { value: '185', label: 'hero.proof2' },
+  { value: '189', label: 'hero.proof3' },
+] as const
+
 function Hero() {
   const { t } = useTranslation()
 
@@ -43,6 +50,15 @@ function Hero() {
               <FiDownload /> {t('hero.ctaDownloadCv')}
             </a>
           </div>
+
+          <ul className={styles.proof} aria-label={t('hero.proofLabel')}>
+            {proof.map((item) => (
+              <li key={item.value} className={styles.proofItem}>
+                <span className={styles.proofValue}>{item.value}</span>
+                <span className={styles.proofLabel}>{t(item.label)}</span>
+              </li>
+            ))}
+          </ul>
         </motion.div>
       </div>
 
