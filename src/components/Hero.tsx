@@ -15,8 +15,8 @@ function Hero() {
       <div className={styles.inner}>
         <motion.div
           className={styles.content}
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 24 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           <span className={styles.badge}>
