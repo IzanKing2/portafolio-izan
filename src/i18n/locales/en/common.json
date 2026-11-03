@@ -37,6 +37,20 @@
   "method.title": "AI-Augmented Delivery",
   "method.intro": "AI is the reason a one-person project can carry the scope of a team's. It is not the reason the code is correct — that is still process. Nor does it work on its own: it takes a clean context window, detailed specifications and good memory management, which only come with practice and understanding. This is how I combine it all.",
 
+  "companion.label": "Portfolio guide",
+  "companion.toggle": "Show or hide Claude’s comment",
+  "companion.unmute": "Turn Claude’s comments back on",
+  "companion.note": "guide · lines written by Izan",
+  "companion.mute": "mute",
+  "companion.hero": "Hi, I’m Claude. Izan lets me walk you through the portfolio and tell you what’s behind each section.",
+  "companion.projects": "Izan wrote the Between spec before I wrote a single line. Today it’s backed by 800+ tests.",
+  "companion.method": "This is the important part: I propose, Izan reviews. Spec, tests and a browser check before anything is accepted.",
+  "companion.tech": "Laravel and Java come from his training. He delivered Next.js and Supabase with clear specifications.",
+  "companion.experience": "On GestiCAB he inherited code full of god controllers and took it to Laravel 13 with 189 tests green.",
+  "companion.about": "A useful fact: Izan keeps my context clean and the specs detailed. Without that, I perform much worse.",
+  "companion.contact": "If you’re convinced, write to him. I don’t read the email; Izan does.",
+
+
   "tech.eyebrow": "03 — Stack",
   "tech.title": "Technical Toolkit",
 

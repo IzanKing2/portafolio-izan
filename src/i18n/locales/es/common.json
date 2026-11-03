@@ -37,6 +37,20 @@
   "method.title": "Entrega asistida por IA",
   "method.intro": "La IA es la razón por la que un proyecto de una sola persona puede tener el alcance del de un equipo. No es la razón por la que el código es correcto: eso sigue siendo cuestión de proceso. Y no funciona sola: exige una ventana de contexto limpia, especificaciones detalladas y buen manejo de la memoria, algo que solo se aprende con práctica y entendimiento. Así combino todo ello.",
 
+  "companion.label": "Guía del portafolio",
+  "companion.toggle": "Mostrar u ocultar el comentario de Claude",
+  "companion.unmute": "Reactivar los comentarios de Claude",
+  "companion.note": "guía · textos escritos por Izan",
+  "companion.mute": "silenciar",
+  "companion.hero": "Hola, soy Claude. Izan me deja acompañarte por el portafolio y te cuento qué hay detrás de cada sección.",
+  "companion.projects": "Between lo especificó Izan antes de que yo escribiera una sola línea. Hoy lo respaldan más de 800 tests.",
+  "companion.method": "Esto es lo importante: yo propongo, Izan revisa. Spec, tests y comprobación en el navegador antes de aceptar nada.",
+  "companion.tech": "Laravel y Java vienen de su formación. Next.js y Supabase los sacó adelante con especificaciones claras.",
+  "companion.experience": "En GestiCAB heredó código con god controllers y lo subió a Laravel 13 con 189 tests en verde.",
+  "companion.about": "Un dato útil: Izan me mantiene el contexto limpio y las specs detalladas. Sin eso, rindo bastante peor.",
+  "companion.contact": "Si te ha convencido, escríbele. Yo no leo el correo; Izan sí.",
+
+
   "tech.eyebrow": "03 — Stack",
   "tech.title": "Caja de herramientas técnica",
 
