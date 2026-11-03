@@ -1,10 +1,12 @@
 import { FiArrowUp } from 'react-icons/fi'
 import styles from '../styles/Footer.module.css'
 import { useTranslation } from '../i18n/I18nProvider'
+import { useSectionHref } from '../hooks/useSectionHref'
 import { socials } from '../data/socials'
 
 function Footer() {
   const { t } = useTranslation()
+  const sectionHref = useSectionHref()
 
   const navLinks = [
     { id: 'projects', label: t('nav.work') },
@@ -19,7 +21,7 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.brand}>
-          <a href="#hero" className={styles.logo}>
+          <a href={sectionHref('hero')} className={styles.logo}>
             IZAN
             <span className={styles.logoDot} />
           </a>
@@ -29,7 +31,7 @@ function Footer() {
 
         <nav className={styles.nav} aria-label="Footer">
           {navLinks.map(({ id, label }) => (
-            <a key={id} href={`#${id}`} className={styles.navLink}>
+            <a key={id} href={sectionHref(id)} className={styles.navLink}>
               {label}
             </a>
           ))}
@@ -51,7 +53,7 @@ function Footer() {
             ))}
           </div>
 
-          <a href="#hero" className={styles.backToTop} aria-label={t('footer.backToTop')}>
+          <a href={sectionHref('hero')} className={styles.backToTop} aria-label={t('footer.backToTop')}>
             <FiArrowUp />
           </a>
         </div>

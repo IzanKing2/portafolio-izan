@@ -25,7 +25,6 @@
   font-size: clamp(1.9rem, 4vw, 2.6rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
   color: var(--color-text);
 }
 
@@ -178,4 +177,63 @@
   .section {
     padding: 4rem 1.25rem;
   }
+}
+
+/* Redesign: each position is a card; the section thread replaces the rail. */
+.timeline {
+  gap: 0.9rem;
+}
+
+.item {
+  grid-template-columns: 11rem 1fr;
+  gap: 1.6rem;
+  padding: 1.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--color-surface-2), var(--color-surface));
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.item:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  transform: translateY(-2px);
+}
+
+.period {
+  text-align: left;
+  color: var(--color-accent-text);
+}
+
+.rail {
+  display: none;
+}
+
+.content {
+  padding-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+.detailLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-bottom: 1px;
+  border-bottom: 1px solid var(--color-border-strong);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.detailLink:hover {
+  color: var(--color-accent-text);
+  border-bottom-color: var(--color-accent);
 }

@@ -25,7 +25,7 @@ CI (`.github/workflows/ci.yml`) runs on push/PR to `main`/`master`: `npm ci` →
 This is a **statically pre-rendered** (SSG) bilingual portfolio, not a plain SPA — built with `vite-react-ssg`, not `react-dom` directly.
 
 - `src/main.tsx` calls `ViteReactSSG({ routes })` from `src/App.tsx`.
-- Routes (`src/App.tsx`): `/:lang` → `Home`, statically generated for each locale via `getStaticPaths: () => [...locales]`; `/` → `RootRedirect`, a client-only component that reads `localStorage('lang')` / `navigator.language` and redirects to `/es` or `/en`.
+- Routes (`src/App.tsx`): `/:lang` → `Home` and `/:lang/projects` → `ProjectsDetail` (technical write-ups per project), both statically generated for each locale via `getStaticPaths`; `/` → `RootRedirect`, a client-only component that reads `localStorage('lang')` / `navigator.language` and redirects to `/es` or `/en`.
 - `src/pages/Home.tsx` reads `lang` from the route, wraps everything in `I18nProvider`, and composes the page: `Navbar`, `Hero` are eager; everything below the fold (`Proyectos`, `Method`, `Tecnologias`, `Experiencia`, `SobreMi`, `Contacto`) is `lazy()`-loaded inside one `Suspense`.
 - `npm run build` outputs prerendered `dist/es/index.html` and `dist/en/index.html`, then `scripts/gen-sitemap.mjs` writes `dist/sitemap.xml` with hreflang alternates for both locales (`VITE_SITE_URL` env var overrides the canonical origin, default `https://izancarlo.dev`).
 
@@ -37,13 +37,17 @@ This is a **statically pre-rendered** (SSG) bilingual portfolio, not a plain SPA
   - A locale-agnostic `Record<Id, Base>` (stack, links, flags, numbers — same across languages).
   - A `Record<Locale, Record<Id, Translated>>` (titles/descriptions per language).
   - `mergeLocalized` zips them into an ordered array keyed by `id`, using the **insertion order of the base record's keys** as the display order (e.g. `getProjects()` in `src/data/projects.ts` — the first key in `projectsBase` is the one that gets the "featured" card treatment in `Proyectos.tsx`, since that component styles `index === 0` specially).
-  - This pattern is used in `src/data/projects.ts`, `src/data/technologies.ts`, `src/data/experience.ts`, `src/data/method.ts`. When adding an entry (e.g. a new project), add it to both the `*Base` record and every locale's `*I18n` record with matching `id`.
+  - This pattern is used in `src/data/projects.ts`, `src/data/technologies.ts`, `src/data/experience.ts`, `src/data/method.ts` and `src/data/projectDetails.ts` (content of the `/projects` page; keep es/en entries the same length, a test checks it). When adding an entry (e.g. a new project), add it to both the `*Base` record and every locale's `*I18n` record with matching `id`.
 
 ### Styling
 
 - One global stylesheet (`src/index.css`) defines CSS custom properties as the design-token source of truth: `--color-*` (dark theme by default, `[data-theme='light']` override), `--font-main`/`--font-mono`, `--radius`, `--shadow-card`, `--max-width`. See `DESIGN.md` for the fuller rationale.
 - Every component has a co-located CSS Module in `src/styles/<Component>.module.css` — no UI framework/library is used.
 - `ProjectPreview.tsx` renders a fake "browser chrome" mockup whose inner content shape is driven by a `variant` prop (`grid` | `list` | `api` | `mobile`) declared per-project in `src/data/projects.ts`; used for projects without a real screenshot (`project.imagen` takes priority when present and is imported as a bundled asset, not a path string).
+
+### Navigation across pages
+
+Navbar/Footer anchors go through `useSectionHref()` so `#projects` stays local on Home but becomes `/es#projects` on other pages. Adding a new page also means adding it to `ROUTES` in `scripts/gen-sitemap.mjs`.
 
 ### SEO
 

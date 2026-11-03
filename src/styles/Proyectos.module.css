@@ -30,18 +30,29 @@
   font-size: clamp(1.9rem, 4vw, 2.6rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
   color: var(--color-text);
 }
 
-/* Filters */
+/* Filters: a pill slides between the options and each shows how many projects it keeps */
+.filterBar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.55rem;
+}
+
 .filters {
   display: flex;
   gap: 0.4rem;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .filterBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   background: transparent;
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
@@ -49,7 +60,7 @@
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 600;
-  transition: all 0.25s ease;
+  transition: border-color 0.25s ease, color 0.25s ease;
 }
 
 .filterBtn:hover {
@@ -57,20 +68,61 @@
   color: var(--color-text);
 }
 
-.activeFilter {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
+.filterBtn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.filterActive,
+.filterActive:hover {
+  border-color: transparent;
   color: var(--color-accent-ink);
 }
 
-/* Cards */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  align-items: start;
+.filterPill {
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  border-radius: 999px;
+  background-color: var(--color-accent);
 }
 
+.filterLabel,
+.filterCount {
+  position: relative;
+  z-index: 1;
+}
+
+.filterCount {
+  min-width: 1.15rem;
+  padding: 0 0.3rem;
+  border-radius: 999px;
+  background-color: color-mix(in srgb, currentColor 14%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  line-height: 1.5;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.resultCount {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+/* Grid: one 6-column grid for every filter state, so cards re-flow instead of switching layouts */
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* No CSS transform transition here on purpose: Framer Motion animates the card's
+   transform (layout moves, hover lift) and a CSS transition on it makes that lag. */
 .card {
   display: flex;
   flex-direction: column;
@@ -78,28 +130,62 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
   border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
   box-shadow: var(--shadow-card), 0 0 28px rgba(245, 196, 0, 0.1);
 }
 
-/* First card spans the row and lays out side by side, with an accent
-   glow ring to mark it as the flagship project. */
-.featured {
-  grid-column: 1 / -1;
-  flex-direction: row;
+.spanHero {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.spanHero1 {
+  grid-column: span 4;
+}
+
+.spanSide {
+  grid-column: span 2;
+}
+
+.spanHalf {
+  grid-column: span 3;
+}
+
+/* Flagship: accent glow ring, screenshot on top */
+.flagship {
   border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
   box-shadow: var(--shadow-card), 0 0 0 1px color-mix(in srgb, var(--color-accent) 18%, transparent),
     0 0 48px rgba(245, 196, 0, 0.08);
 }
 
-.featured:hover {
+.flagship:hover {
   box-shadow: var(--shadow-card), 0 0 0 1px color-mix(in srgb, var(--color-accent) 30%, transparent),
     0 0 56px rgba(245, 196, 0, 0.16);
+}
+
+.preview {
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background-color: #0a0609;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
 }
 
 .flagshipTag {
@@ -119,34 +205,6 @@
   text-transform: uppercase;
   padding: 0.22rem 0.55rem;
   border-radius: 4px;
-}
-
-.preview {
-  position: relative;
-  height: 210px;
-  flex-shrink: 0;
-  border-bottom: 1px solid var(--color-border);
-  overflow: hidden;
-}
-
-.featured .preview {
-  width: 52%;
-  height: auto;
-  min-height: 320px;
-  border-bottom: none;
-  border-right: 1px solid var(--color-border);
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background-color: #0a0609;
-  transition: transform 0.5s ease;
-}
-
-.card:hover .image {
-  transform: scale(1.04);
 }
 
 .liveTag {
@@ -175,16 +233,37 @@
   flex: 1;
 }
 
-.featured .body {
-  padding: 2.25rem;
-  justify-content: center;
+.flagship .body {
+  padding: 1.75rem 2rem 2rem;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.barDot,
+.barDotLive {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-border-strong);
+}
+
+.barDotLive {
+  background-color: var(--color-success);
 }
 
 .titleRow {
   display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
 }
 
 .cardTitle {
@@ -194,16 +273,13 @@
   letter-spacing: -0.01em;
 }
 
-.featured .cardTitle {
+.flagship .cardTitle {
   font-size: 1.65rem;
 }
 
 .cardSubtitle {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  color: var(--color-accent-text);
 }
 
 .description {
@@ -211,6 +287,14 @@
   font-size: 0.92rem;
   line-height: 1.7;
   flex: 1;
+}
+
+.spanSide .description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: none;
 }
 
 .stack {
@@ -232,7 +316,7 @@
 
 .links {
   display: flex;
-  gap: 0.6rem;
+  gap: 1rem;
   flex-wrap: wrap;
   margin-top: 0.25rem;
 }
@@ -241,32 +325,49 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  padding-bottom: 1px;
+  border-bottom: 1px solid var(--color-border-strong);
   font-size: 0.83rem;
   font-weight: 600;
   text-decoration: none;
   color: var(--color-text);
-  background-color: transparent;
-  border: 1px solid var(--color-border-strong);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
-  transition: all 0.25s ease;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .link:hover {
-  border-color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
   color: var(--color-accent-text);
 }
 
-.linkPrimary {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-accent-ink);
+.allDetails {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding-bottom: 1px;
+  border-bottom: 1px solid var(--color-border-strong);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
-.linkPrimary:hover {
-  color: var(--color-accent-ink);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(245, 196, 0, 0.25);
+.allDetails:hover {
+  color: var(--color-accent-text);
+  border-bottom-color: var(--color-accent);
+}
+
+@media (max-width: 1100px) {
+  .spanHero,
+  .spanHero1 {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .spanSide {
+    grid-column: span 3;
+  }
 }
 
 @media (max-width: 900px) {
@@ -274,20 +375,16 @@
     grid-template-columns: 1fr;
   }
 
-  .featured {
-    flex-direction: column;
+  .spanHero,
+  .spanHero1,
+  .spanSide,
+  .spanHalf {
+    grid-column: 1 / -1;
   }
 
-  .featured .preview {
-    width: 100%;
-    min-height: 0;
-    height: 210px;
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .featured .body {
-    padding: 1.5rem;
+  .spanSide .description {
+    display: block;
+    flex: 1;
   }
 }
 
@@ -298,5 +395,13 @@
 
   .header {
     align-items: flex-start;
+  }
+
+  .filterBar {
+    align-items: flex-start;
+  }
+
+  .filters {
+    justify-content: flex-start;
   }
 }

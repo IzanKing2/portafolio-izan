@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi'
 import { useTheme } from '../hooks/useTheme'
 import { useTranslation } from '../i18n/I18nProvider'
+import { useSectionHref } from '../hooks/useSectionHref'
 import { locales, type Locale } from '../i18n/config'
 import styles from '../styles/Navbar.module.css'
 
@@ -14,6 +15,7 @@ function Navbar() {
   const { t, locale } = useTranslation()
   const location = useLocation()
   const navigate = useNavigate()
+  const sectionHref = useSectionHref()
 
   const sections = [
     { id: 'projects', label: t('nav.work') },
@@ -27,7 +29,7 @@ function Navbar() {
 
   const switchLanguage = () => {
     window.localStorage.setItem('lang', otherLocale)
-    navigate(`/${otherLocale}${location.hash}`, { replace: true })
+    navigate(`${location.pathname.replace(`/${locale}`, `/${otherLocale}`)}${location.hash}`, { replace: true })
   }
 
   useEffect(() => {
@@ -58,7 +60,7 @@ function Navbar() {
   return (
     <div className={styles.navbarWrapper}>
       <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
-        <a href="#hero" className={styles.logo} onClick={() => setMenuOpen(false)}>
+        <a href={sectionHref('hero')} className={styles.logo} onClick={() => setMenuOpen(false)}>
           IZAN
           <span className={styles.logoDot} />
         </a>
@@ -67,7 +69,7 @@ function Navbar() {
           {sections.map(({ id, label }) => (
             <li key={id}>
               <a
-                href={`#${id}`}
+                href={sectionHref(id)}
                 className={`${styles.link} ${activeSection === id ? styles.active : ''}`}
               >
                 {label}
@@ -87,7 +89,7 @@ function Navbar() {
           <button onClick={toggleTheme} className={styles.iconBtn} aria-label={t('nav.toggleTheme')}>
             {theme === 'dark' ? <FiSun /> : <FiMoon />}
           </button>
-          <a href="#contact" className={styles.cta}>
+          <a href={sectionHref('contact')} className={styles.cta}>
             {t('nav.cta')}
           </a>
           <button
@@ -106,14 +108,14 @@ function Navbar() {
           {sections.map(({ id, label }) => (
             <a
               key={id}
-              href={`#${id}`}
+              href={sectionHref(id)}
               className={styles.mobileLink}
               onClick={() => setMenuOpen(false)}
             >
               {label}
             </a>
           ))}
-          <a href="#contact" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+          <a href={sectionHref('contact')} className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
             {t('nav.contact')}
           </a>
         </div>

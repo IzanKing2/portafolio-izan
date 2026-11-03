@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion'
-import { FiArrowUpRight } from 'react-icons/fi'
+import { FiArrowRight } from 'react-icons/fi'
 import styles from '../styles/Contacto.module.css'
 import { useTranslation } from '../i18n/I18nProvider'
 import { socials } from '../data/socials'
 
+const EMAIL = 'izanwork2@gmail.com'
+
 function Contacto() {
   const { t } = useTranslation()
+  const profiles = socials.filter(({ href }) => href.startsWith('http'))
 
   return (
     <section id="contact" className={styles.section}>
@@ -16,43 +19,33 @@ function Contacto() {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
       >
-        <div className={styles.top}>
-          <span className={styles.eyebrow}>{t('contact.eyebrow')}</span>
-          <div className={styles.socials}>
-            {socials.map(({ href, labelKey, Icon }) => (
-              <a
-                key={labelKey}
-                href={href}
-                target={href.startsWith('http') ? '_blank' : undefined}
-                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className={styles.socialLink}
-                aria-label={t(labelKey)}
-              >
-                <Icon />
-              </a>
-            ))}
-          </div>
-        </div>
+        <span className={styles.eyebrow}>{t('contact.eyebrow')}</span>
 
         <h2 className={styles.headline}>
           {t('contact.headlineLine1')}
-          <br />
-          {t('contact.headlineLine2')}
+          <em className={styles.accent}>{t('contact.headlineLine2')}</em>
         </h2>
 
-        <div className={styles.bottom}>
-          <div className={styles.details}>
-            <a href="mailto:izanwork2@gmail.com" className={styles.detail}>
-              izanwork2@gmail.com
-            </a>
-          </div>
-
+        <div className={styles.actions}>
           <a
-            href="mailto:izanwork2@gmail.com?subject=Let%27s%20work%20together"
-            className={styles.send}
+            href={`mailto:${EMAIL}?subject=Let%27s%20work%20together`}
+            className={`${styles.btn} ${styles.btnPrimary}`}
           >
-            {t('contact.sendMessage')} <FiArrowUpRight />
+            {t('contact.sendMessage')} <FiArrowRight />
           </a>
+
+          {profiles.map(({ href, name, labelKey, Icon }) => (
+            <a
+              key={labelKey}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.btn} ${styles.btnGhost}`}
+              aria-label={t(labelKey)}
+            >
+              <Icon /> {name}
+            </a>
+          ))}
         </div>
       </motion.div>
     </section>

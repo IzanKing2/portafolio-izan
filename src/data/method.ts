@@ -32,8 +32,8 @@ export const methodStepsI18n: Record<Locale, Record<MethodStepId, MethodStepTran
     'spec-first': {
       titulo: 'Spec first, code second',
       descripcion:
-        'Every project starts as a written specification: scope, data model, states and acceptance criteria. The spec becomes the contract the implementation is measured against — so AI works inside explicit boundaries instead of guessing at intent.',
-      tags: ['Specification', 'Acceptance criteria', 'Scoped iterations'],
+        'Every feature starts as a written specification: scope, data model, states and acceptance criteria. Between has a product spec of 100+ sections, a technical spec per service and an ADR for every cross-cutting decision. The AI implements against that spec, not against a vague idea.',
+      tags: ['Specification', 'ADRs', 'Acceptance criteria'],
     },
     'unfamiliar-stacks': {
       titulo: 'Unfamiliar stacks, production output',
@@ -44,16 +44,16 @@ export const methodStepsI18n: Record<Locale, Record<MethodStepId, MethodStepTran
     'ai-signoff': {
       titulo: 'AI accelerates, I sign off',
       descripcion:
-        'Generated code is a draft, not a delivery. Everything goes through review, type checks, tests and manual verification before it merges. AI multiplies throughput; the engineering judgment stays mine.',
-      tags: ['Code review', 'Automated tests', 'CI pipeline'],
+        'Generated code is a draft, not a delivery. Everything goes through review, type checks, tests and a check in the browser before it merges — and in Between, SQL scripts against the local stack too. Agents work with skills I wrote and MCP connections, inside project rules. AI multiplies throughput; the engineering judgment stays mine.',
+      tags: ['Code review', 'Automated tests', 'Agent skills', 'MCP'],
     },
   },
   es: {
     'spec-first': {
       titulo: 'Primero la especificación, luego el código',
       descripcion:
-        'Cada proyecto empieza como una especificación escrita: alcance, modelo de datos, estados y criterios de aceptación. Esa especificación es el contrato con el que se mide la implementación, así que la IA trabaja dentro de límites explícitos en vez de adivinar la intención.',
-      tags: ['Especificación', 'Criterios de aceptación', 'Iteraciones acotadas'],
+        'Cada funcionalidad empieza como una especificación escrita: alcance, modelo de datos, estados y criterios de aceptación. Between tiene una spec de producto de más de 100 secciones, una spec técnica por servicio y un ADR por cada decisión transversal. La IA implementa contra esa spec, no contra una idea vaga.',
+      tags: ['Especificación', 'ADRs', 'Criterios de aceptación'],
     },
     'unfamiliar-stacks': {
       titulo: 'Stacks nuevos, resultado en producción',
@@ -64,8 +64,8 @@ export const methodStepsI18n: Record<Locale, Record<MethodStepId, MethodStepTran
     'ai-signoff': {
       titulo: 'La IA acelera, yo doy el visto bueno',
       descripcion:
-        'El código generado es un borrador, no una entrega. Todo pasa por revisión, comprobación de tipos, tests y verificación manual antes de fusionarse. La IA multiplica el ritmo; el criterio de ingeniería sigue siendo mío.',
-      tags: ['Revisión de código', 'Tests automatizados', 'Pipeline de CI'],
+        'El código generado es un borrador, no una entrega. Todo pasa por revisión, comprobación de tipos, tests y una comprobación en el navegador antes de fusionarse — y en Between, además, scripts SQL contra el stack local. Los agentes trabajan con skills que escribo yo y conexiones MCP, dentro de las reglas del proyecto. La IA multiplica el ritmo; el criterio de ingeniería sigue siendo mío.',
+      tags: ['Revisión de código', 'Tests automatizados', 'Agent skills', 'MCP'],
     },
   },
 };

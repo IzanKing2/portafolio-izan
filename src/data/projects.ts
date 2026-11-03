@@ -30,7 +30,7 @@ export interface Project extends ProjectBase, ProjectTranslations {
 
 export const projectsBase: Record<ProjectId, ProjectBase> = {
   betweengame: {
-    stack: ['React', 'Next.js', 'Supabase', 'TailwindCSS', 'PWA'],
+    stack: ['React', 'Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Stripe', 'PWA'],
     demo: 'https://betweengame.com',
     destacado: true,
     imagen: betweengamePreview,
@@ -38,7 +38,7 @@ export const projectsBase: Record<ProjectId, ProjectBase> = {
     addressBar: 'betweengame.com',
   },
   saborsemanal: {
-    stack: ['React', 'Next.js', 'Supabase', 'TailwindCSS'],
+    stack: ['React', 'Next.js', 'Supabase', 'PostgreSQL', 'TailwindCSS', 'PWA'],
     demo: 'https://saborsemanal.vercel.app/',
     destacado: true,
     preview: 'grid',
@@ -67,25 +67,45 @@ export const projectsBase: Record<ProjectId, ProjectBase> = {
   },
 };
 
+/**
+ * Filters shown above the project grid. A project matches a filter when any
+ * of its stack items is listed in `match`; filters with no matches are hidden.
+ */
+export interface ProjectFilter {
+  id: string;
+  label: string;
+  match: string[];
+}
+
+export const projectFilters: ProjectFilter[] = [
+  { id: 'react', label: 'React', match: ['React', 'Next.js'] },
+  { id: 'laravel', label: 'Laravel', match: ['Laravel'] },
+  { id: 'java', label: 'Java', match: ['Java', 'Spring Boot'] },
+];
+
+export function matchesFilter(project: { stack: string[] }, filter: ProjectFilter): boolean {
+  return project.stack.some((item) => filter.match.includes(item));
+}
+
 export const projectsI18n: Record<Locale, Record<ProjectId, ProjectTranslations>> = {
   en: {
     betweengame: {
       titulo: 'Between',
       subtitulo: 'Private game for couples — live product',
       descripcion:
-        'A full product built and shipped solo in about three weeks: real paying-ready users, a private consent-matching system between partners, daily missions and streaks, push notifications, age-gating and published privacy/terms policies — the scope a small team would normally need, end to end from spec to production.',
+        'A complete product designed, built and shipped solo: a PWA with challenges, daily and weekly missions, real-time and long-distance minigames, streaks and achievements. Privacy is structural — per-couple isolation with Row Level Security and consent enforced in the content-selection engine — backed by 800+ unit tests and 185 SQL migrations. Live with real users.',
     },
     saborsemanal: {
       titulo: 'SaborSemanal',
       subtitulo: 'Weekly meal planner',
       descripcion:
-        'Plan a week of meals, add and edit recipes, publish them, and generate the shopping list automatically. Built on a stack outside my formal training — spec-driven from the first line.',
+        'A PWA to plan the week of meals: recipes with allergens and portions, an automatic shopping list and offline mode. Business logic lives in transactional PostgreSQL RPCs with RLS and pgTAP tests. Built on a stack outside my formal training — spec-driven from the first line.',
     },
     geekzone: {
       titulo: 'GeekZone',
       subtitulo: 'E-commerce platform',
       descripcion:
-        'Collectibles marketplace with catalog, cart, favorites and an admin panel, backed by a REST API documented with Swagger and containerised for deployment.',
+        'Intermodular 2nd-year DAW project built by a team of three: a collectibles marketplace with catalog, cart, favorites and an admin panel, backed by a JWT REST API documented with Swagger, reCAPTCHA, and a Docker + Nginx setup.',
     },
     'hybrid-furniture': {
       titulo: 'Hybrid Furniture Store',
@@ -105,19 +125,19 @@ export const projectsI18n: Record<Locale, Record<ProjectId, ProjectTranslations>
       titulo: 'Between',
       subtitulo: 'Juego privado para parejas — producto en producción',
       descripcion:
-        'Producto completo construido y desplegado en solitario en unas tres semanas: usuarios reales, un sistema privado de encaje por consentimiento entre ambos miembros de la pareja, misiones diarias y rachas, notificaciones push, control de edad y políticas de privacidad y términos publicadas — el alcance que normalmente necesitaría un pequeño equipo, de principio a fin desde la especificación hasta producción.',
+        'Producto completo diseñado, construido y desplegado en solitario: una PWA con retos, misiones diarias y semanales, minijuegos en tiempo real y a distancia, rachas y logros. La privacidad es estructural — aislamiento por pareja con Row Level Security y consentimiento aplicado en el motor de selección de contenido — respaldada por más de 800 tests unitarios y 185 migraciones SQL. En producción con usuarios reales.',
     },
     saborsemanal: {
       titulo: 'SaborSemanal',
       subtitulo: 'Planificador semanal de comidas',
       descripcion:
-        'Planifica una semana de comidas, añade y edita recetas, publícalas y genera la lista de la compra automáticamente. Construido sobre un stack ajeno a mi formación — guiado por especificación desde la primera línea.',
+        'PWA para planificar la semana de comidas: recetas con alérgenos y porciones, lista de la compra automática y modo offline. La lógica vive en RPC transaccionales de PostgreSQL con RLS y tests pgTAP. Construido sobre un stack ajeno a mi formación — guiado por especificación desde la primera línea.',
     },
     geekzone: {
       titulo: 'GeekZone',
       subtitulo: 'Plataforma de e-commerce',
       descripcion:
-        'Marketplace de coleccionables con catálogo, carrito, favoritos y panel de administración, respaldado por una API REST documentada con Swagger y containerizada para su despliegue.',
+        'Proyecto intermodular de 2º DAW hecho en un equipo de tres: marketplace de coleccionables con catálogo, carrito, favoritos y panel de administración, respaldado por una API REST con JWT documentada con Swagger, reCAPTCHA y un entorno Docker + Nginx.',
     },
     'hybrid-furniture': {
       titulo: 'Tienda de muebles híbrida',

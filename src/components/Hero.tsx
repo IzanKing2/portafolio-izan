@@ -1,115 +1,16 @@
-import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { FiDownload, FiArrowRight } from 'react-icons/fi'
 import ArchitectureDiagram from './ArchitectureDiagram'
+import NeuralBrainCanvas from './NeuralBrainCanvas'
 import styles from '../styles/Hero.module.css'
 import { useTranslation } from '../i18n/I18nProvider'
 
-interface Particle {
-  x: number
-  y: number
-  vx: number
-  vy: number
-  radius: number
-  opacity: number
-}
-
 function Hero() {
   const { t } = useTranslation()
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const animRef = useRef<number | null>(null)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const ctx = canvas?.getContext('2d')
-    if (!canvas || !ctx) return
-
-    const sizeCanvas = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
-    }
-    sizeCanvas()
-
-    const particles: Particle[] = Array.from({ length: 46 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      radius: Math.random() * 1.8 + 0.4,
-      opacity: Math.random() * 0.3 + 0.12,
-    }))
-
-    const mouse: { x: number | null; y: number | null } = { x: null, y: null }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect()
-      mouse.x = e.clientX - rect.left
-      mouse.y = e.clientY - rect.top
-    }
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      particles.forEach((p) => {
-        p.x += p.vx
-        p.y += p.vy
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1
-
-        if (mouse.x !== null && mouse.y !== null) {
-          const dx = mouse.x - p.x
-          const dy = mouse.y - p.y
-          const dist = Math.hypot(dx, dy)
-          if (dist < 140) {
-            const force = ((140 - dist) / 140) * 0.02
-            p.vx += dx * force
-            p.vy += dy * force
-            const speed = Math.hypot(p.vx, p.vy)
-            if (speed > 1.6) {
-              p.vx = (p.vx / speed) * 1.6
-              p.vy = (p.vy / speed) * 1.6
-            }
-          }
-        }
-
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(245, 196, 0, ${p.opacity})`
-        ctx.fill()
-      })
-
-      particles.forEach((a, i) => {
-        particles.slice(i + 1).forEach((b) => {
-          const dist = Math.hypot(a.x - b.x, a.y - b.y)
-          if (dist < 90) {
-            ctx.beginPath()
-            ctx.moveTo(a.x, a.y)
-            ctx.lineTo(b.x, b.y)
-            ctx.strokeStyle = `rgba(245, 196, 0, ${0.07 * (1 - dist / 90)})`
-            ctx.lineWidth = 0.5
-            ctx.stroke()
-          }
-        })
-      })
-
-      animRef.current = requestAnimationFrame(draw)
-    }
-
-    draw()
-
-    window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('resize', sizeCanvas)
-
-    return () => {
-      if (animRef.current !== null) cancelAnimationFrame(animRef.current)
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('resize', sizeCanvas)
-    }
-  }, [])
 
   return (
     <section id="hero" className={styles.hero}>
-      <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
+      <NeuralBrainCanvas className={styles.canvas} />
 
       <div className={styles.inner}>
         <motion.div
@@ -143,15 +44,10 @@ function Hero() {
             </a>
           </div>
         </motion.div>
+      </div>
 
-        <motion.div
-          className={styles.visual}
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
-        >
-          <ArchitectureDiagram />
-        </motion.div>
+      <div className={styles.strip}>
+        <ArchitectureDiagram />
       </div>
     </section>
   )

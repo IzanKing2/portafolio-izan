@@ -50,13 +50,13 @@ export const statsI18n: Record<Locale, Record<StatId, StatTranslations>> = {
 
 export const techGroupsBase: Record<TechGroupId, TechGroupBase> = {
   frontend: {
-    items: ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Angular', 'TailwindCSS'],
+    items: ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue', 'Angular', 'TailwindCSS'],
   },
   backend: {
     items: ['PHP', 'Laravel', 'Java', 'Spring Boot', 'Python', 'Supabase', 'REST APIs'],
   },
   systems: {
-    items: ['Docker', 'Ubuntu', 'Nginx', 'MySQL', 'PostgreSQL', 'Git', 'GitHub Actions', 'Vercel'],
+    items: ['Docker', 'Ubuntu', 'Nginx', 'MySQL', 'PostgreSQL', 'Git', 'GitHub Actions', 'Vercel', 'Vitest', 'Playwright', 'PHPUnit', 'pgTAP'],
   },
   'ai-method': {
     items: [
@@ -65,6 +65,9 @@ export const techGroupsBase: Record<TechGroupId, TechGroupBase> = {
       'AI-Assisted Refactoring',
       'Automated Test Loops',
       'Context Engineering',
+      'Agent Skills',
+      'MCP',
+      'ADRs',
     ],
   },
 };
