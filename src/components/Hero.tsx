@@ -1,5 +1,5 @@
 ﻿import { motion } from 'framer-motion'
-import { FiDownload, FiArrowRight } from 'react-icons/fi'
+import { FiDownload, FiArrowRight, FiFileText } from 'react-icons/fi'
 import ArchitectureDiagram from './ArchitectureDiagram'
 import NeuralBrainCanvas from './NeuralBrainCanvas'
 import styles from '../styles/Hero.module.css'
@@ -41,6 +41,14 @@ function Hero() {
           <div className={styles.actions}>
             <a href="#projects" className={`${styles.btn} ${styles.btnPrimary}`}>
               {t('hero.ctaProjects')} <FiArrowRight />
+            </a>
+            <a
+              href="/cv.html"
+              className={`${styles.btn} ${styles.btnGhost}`}
+              target="_blank"
+              rel="noopener"
+            >
+              <FiFileText /> {t('hero.ctaViewCv')}
             </a>
             <a
               href="/CV_Izan_Celis_2026.pdf"
