@@ -4,6 +4,7 @@ import CustomCursor from '../components/CustomCursor'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer'
+import Companion from '../components/Companion'
 import SEO from '../components/SEO'
 import { useScrollProgress } from '../hooks/useScrollProgress'
 import { I18nProvider } from '../i18n/I18nProvider'
@@ -39,6 +40,7 @@ function Home() {
         </Suspense>
       </main>
       <Footer />
+      <Companion />
     </I18nProvider>
   )
 }
